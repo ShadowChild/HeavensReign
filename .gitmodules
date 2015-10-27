@@ -1,0 +1,3 @@
+[submodule "SilenceEngine"]
+	path = SilenceEngine
+	url = https://github.com/sriharshachilakapati/SilenceEngine.git
