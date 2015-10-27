@@ -1,0 +1,6 @@
+@ECHO OFF
+
+:buildEngine
+
+:copyLibs
+

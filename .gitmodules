@@ -1,3 +1,6 @@
 [submodule "SilenceEngine"]
 	path = SilenceEngine
 	url = https://github.com/sriharshachilakapati/SilenceEngine.git
+[submodule "ShadowCommon"]
+	path = ShadowCommon
+	url = https://github.com/ShadowChild/ShadowCommon.git
