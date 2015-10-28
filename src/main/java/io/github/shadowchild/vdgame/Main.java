@@ -12,12 +12,17 @@ public class Main extends Game {
     public static final int HEIGHT = 1080;
     public static final int WIDTH = (HEIGHT / 16) * 9;
 
+    // Initialise this before so that the start method wont resize the display
+    public void preInit() {
+        
+        // Display.setTitle("Ashleigh's Valentines Day Game");
+        Display.setSize(WIDTH, HEIGHT);
+        Display.setFullScreen(true);
+    }
+
     // Initialize the resources
     public void init() {
 
-        Display.setTitle("Ashleigh's Valentines Day Game");
-        Display.setSize(WIDTH, HEIGHT);
-        Display.setFullScreen(true);
     }
 
     // Update game logic
