@@ -1,7 +1,7 @@
 @ECHO OFF
 
 :setup
-set currentDir=%CD%
+set currentDir="%CD%"
 set silenceDir=%currentDir%\SilenceEngine
 set mainDir=%silenceDir%\..\
 

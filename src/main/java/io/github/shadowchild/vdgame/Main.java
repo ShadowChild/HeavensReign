@@ -3,6 +3,8 @@ package io.github.shadowchild.vdgame;
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.graphics.Batcher;
+import com.shc.silenceengine.input.Keyboard;
+import io.github.shadowchild.common.util.KeyboardUtils;
 import io.github.shadowchild.vdgame.states.LoadingState;
 
 /**
@@ -30,6 +32,10 @@ public class Main extends Game {
     // Update game logic
     public void update(float delta) {
 
+        if(KeyboardUtils.wasKeyReleased(Keyboard.KEY_ESCAPE)) {
+
+            disposeSafely();
+        }
     }
 
     // Render to screen
@@ -50,5 +56,10 @@ public class Main extends Game {
     public static void main(String... args) {
 
         new Main().start();
+    }
+
+    public void disposeSafely() {
+
+        Game.end();
     }
 }
