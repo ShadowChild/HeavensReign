@@ -63,7 +63,7 @@ public class LoadingState extends GameState {
         camera.apply();
 
         if (customLoader != null) {
-            
+
         }
     }
 
