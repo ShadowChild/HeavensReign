@@ -3,7 +3,10 @@ package io.github.shadowchild.vdgame;
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.graphics.Batcher;
+import com.shc.silenceengine.input.Keyboard;
+import io.github.shadowchild.vdgame.handler.ConfigurationHandler;
 import io.github.shadowchild.vdgame.states.LoadingState;
+import io.github.shadowchild.vdgame.utils.Settings;
 
 /**
  * Created by Zach Piddock on 27/10/2015.
@@ -18,7 +21,7 @@ public class Main extends Game {
 
         // Display.setTitle("Ashleigh's Valentines Day Game");
         Display.setSize(WIDTH, HEIGHT);
-        Display.setFullScreen(true);
+        Display.setFullScreen(Settings.fullscreen);
     }
 
     // Initialize the resources
@@ -30,6 +33,10 @@ public class Main extends Game {
     // Update game logic
     public void update(float delta) {
 
+        if(Keyboard.isClicked(Keyboard.KEY_ESCAPE)) {
+
+            disposeSafely();
+        }
     }
 
     // Render to screen
@@ -49,6 +56,13 @@ public class Main extends Game {
 
     public static void main(String... args) {
 
+        ConfigurationHandler.handle();
+
         new Main().start();
+    }
+
+    public void disposeSafely() {
+
+        Game.end();
     }
 }
