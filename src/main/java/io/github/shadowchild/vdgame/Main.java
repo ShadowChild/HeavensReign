@@ -1,5 +1,6 @@
 package io.github.shadowchild.vdgame;
 
+
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.graphics.Batcher;

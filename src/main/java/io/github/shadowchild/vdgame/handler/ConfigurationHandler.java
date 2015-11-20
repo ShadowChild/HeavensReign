@@ -1,5 +1,6 @@
 package io.github.shadowchild.vdgame.handler;
 
+
 import io.github.shadowchild.common.config.Config;
 import io.github.shadowchild.common.config.Configuration;
 import io.github.shadowchild.vdgame.utils.Settings;
@@ -9,7 +10,9 @@ import io.github.shadowchild.vdgame.utils.Settings;
  */
 public class ConfigurationHandler {
 
-    private static Config conf = new Configuration(Configuration.ConfigType.INI, "config/General").load();
+    private static Config conf = new Configuration(Configuration.ConfigType.INI,
+            "config/General"
+    ).load();
 
     public static void handle() {
 
@@ -22,6 +25,8 @@ public class ConfigurationHandler {
         Settings.lastWindowY = conf.getInteger("Window", "Last Window Y Co-ords", 0, null);
         Settings.fullscreen = conf.getBoolean("Window", "Should Be Fullscreen?", true, null);
         Settings.vsync = conf.getBoolean("Window", "Use VSync?", true, null);
-        Settings.aspectRatio = conf.getString("Window", "Aspect Ratio", "16:9", "Leave the backslash in or the game may crash");
+        Settings.aspectRatio = conf.getString("Window", "Aspect Ratio", "16:9",
+                "Leave the backslash in or the game may crash"
+        );
     }
 }

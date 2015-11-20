@@ -1,5 +1,6 @@
 package io.github.shadowchild.vdgame.states;
 
+
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.GameState;
 import com.shc.silenceengine.core.ResourceLoader;
@@ -62,13 +63,14 @@ public class LoadingState extends GameState {
 
         camera.apply();
 
-        if (customLoader != null) {
+        if(customLoader != null) {
 
         }
     }
 
     @Override
     public void resize() {
+
     }
 
     @Override
