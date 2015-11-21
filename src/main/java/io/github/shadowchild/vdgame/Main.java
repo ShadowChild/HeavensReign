@@ -5,6 +5,7 @@ import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.input.Keyboard;
+import io.github.shadowchild.common.util.Utils;
 import io.github.shadowchild.vdgame.handler.ConfigurationHandler;
 import io.github.shadowchild.vdgame.states.LoadingState;
 import io.github.shadowchild.vdgame.utils.Settings;
@@ -57,6 +58,7 @@ public class Main extends Game {
 
     public static void main(String... args) {
 
+        Utils.initialise();
         ConfigurationHandler.handle();
 
         new Main().start();
