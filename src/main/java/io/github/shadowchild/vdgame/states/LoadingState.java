@@ -5,10 +5,9 @@ import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.GameState;
 import com.shc.silenceengine.core.ResourceLoader;
 import com.shc.silenceengine.graphics.Batcher;
-import com.shc.silenceengine.graphics.TrueTypeFont;
 import com.shc.silenceengine.graphics.cameras.OrthoCam;
-import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.utils.Logger;
+import io.github.shadowchild.vdgame.Main;
 
 /**
  * Created by Zach Piddock on 28/10/2015.
@@ -16,12 +15,6 @@ import com.shc.silenceengine.utils.Logger;
 public class LoadingState extends GameState {
 
     private ResourceLoader initialLoader, customLoader;
-
-    private Texture logo;
-    private int logoID;
-
-    private TrueTypeFont font;
-    private int fontID;
 
     private OrthoCam camera;
 
@@ -56,6 +49,7 @@ public class LoadingState extends GameState {
             customLoader = new ResourceLoader();
             customLoader.setProgressRenderCallback(this::customProgressRenderCallback);
         }
+        Main.setGameState(new TitleScreenState());
     }
 
     @Override
