@@ -1,6 +1,7 @@
 @ECHO OFF
 
 :setup
+set isIdea=%1
 set currentDir="%CD%"
 set silenceDir=%currentDir%\SilenceEngine
 set mainDir=%silenceDir%\..\
@@ -20,4 +21,7 @@ robocopy %silenceDir%\libs\ %mainDir%\libs\LWJGL\
 echo Cleaning Up...
 del %silenceDir%\setup.bat
 
+:end
+if %isIdea%=="--noPause" (
 pause
+)
