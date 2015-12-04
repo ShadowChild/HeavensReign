@@ -9,7 +9,7 @@ import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.input.Keyboard;
 import io.github.shadowchild.common.util.Utils;
 import io.github.shadowchild.vdgame.handler.ConfigurationHandler;
-import io.github.shadowchild.vdgame.states.LoadingState;
+import io.github.shadowchild.vdgame.states.TitleScreenState;
 import io.github.shadowchild.vdgame.utils.Settings;
 
 /**
@@ -24,13 +24,14 @@ public class Main extends Game {
     public void preInit() {
 
         Display.setSize(WIDTH, HEIGHT);
+        Display.setResizable(false);
         Display.setFullScreen(Settings.fullscreen);
     }
 
     // Initialize the resources
     public void init() {
 
-        setGameState(new LoadingState());
+        setGameState(new TitleScreenState());
     }
 
     // Update game logic
