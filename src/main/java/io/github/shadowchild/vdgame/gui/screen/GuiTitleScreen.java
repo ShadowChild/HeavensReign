@@ -1,4 +1,4 @@
-package io.github.shadowchild.vdgame.gui;
+package io.github.shadowchild.vdgame.gui.screen;
 
 
 import com.shc.silenceengine.core.Display;
@@ -6,25 +6,28 @@ import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Color;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Paint;
+import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.math.Vector2;
+import io.github.shadowchild.vdgame.gui.element.GuiButton;
+import io.github.shadowchild.vdgame.gui.element.GuiElement;
 import io.github.shadowchild.vdgame.utils.DisplayUtils;
 import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.ArrayList;
 
 /**
  * Created by Zach Piddock on 04/12/2015.
  */
 public class GuiTitleScreen extends Gui {
 
-    private ArrayList<GuiElement> guiElements = new ArrayList<>();
-
     @Override
     public void init() {
 
         // Initialise the elements
+        Texture buttonTexture = Texture.fromResource("assets/textures/gui/button.png");
+        GuiElement optionsButton = new GuiButton((Display.getWidth() / 2) - buttonTexture.getWidth() / 2, 400, new Vector2(buttonTexture.getWidth(), buttonTexture.getHeight()), "Options");
+        optionsButton.setTexture(buttonTexture);
 
         // Add the elements to the arraylist
+        guiElements.add(optionsButton);
     }
 
     @Override
@@ -45,6 +48,15 @@ public class GuiTitleScreen extends Gui {
         graphics.fillRect(fixedCoords, size.getX(), size.getY());
 
         // draw the elements
+        for(GuiElement element : guiElements) {
+
+            if(element instanceof GuiButton) {
+
+                graphics.drawTexture(element.getTexture(), element.x, element.y);
+            } else{
+
+            }
+        }
     }
 
     @Override
