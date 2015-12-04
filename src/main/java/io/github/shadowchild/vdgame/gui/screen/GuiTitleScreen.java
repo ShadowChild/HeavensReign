@@ -23,7 +23,10 @@ public class GuiTitleScreen extends Gui {
 
         // Initialise the elements
         Texture buttonTexture = Texture.fromResource("assets/textures/gui/button.png");
-        GuiElement optionsButton = new GuiButton((Display.getWidth() / 2) - buttonTexture.getWidth() / 2, 400, new Vector2(buttonTexture.getWidth(), buttonTexture.getHeight()), "Options");
+        GuiElement optionsButton = new GuiButton(
+                (Display.getWidth() / 2) - buttonTexture.getWidth() / 2, 400,
+                new Vector2(buttonTexture.getWidth(), buttonTexture.getHeight()), "Options"
+        );
         optionsButton.setTexture(buttonTexture);
 
         // Add the elements to the arraylist
@@ -53,7 +56,7 @@ public class GuiTitleScreen extends Gui {
             if(element instanceof GuiButton) {
 
                 graphics.drawTexture(element.getTexture(), element.x, element.y);
-            } else{
+            } else {
 
             }
         }

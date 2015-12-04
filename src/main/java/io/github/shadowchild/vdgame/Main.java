@@ -67,7 +67,8 @@ public class Main extends Game {
         Utils.initialise();
         ConfigurationHandler.handle();
 
-        new Main().start(new FixedCatchingUpGameLoop().setTargetUpdatesPerSecond(60).setMaxSkippedFrames(5));
+        new Main().start(
+                new FixedCatchingUpGameLoop().setTargetUpdatesPerSecond(60).setMaxSkippedFrames(5));
     }
 
     public void disposeSafely() {

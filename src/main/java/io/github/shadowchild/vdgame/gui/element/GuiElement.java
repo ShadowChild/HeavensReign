@@ -22,6 +22,7 @@ public abstract class GuiElement {
 
         this.x = x;
         this.y = y;
+        this.size = size;
         init();
     }
 
