@@ -11,10 +11,12 @@ public abstract class Gui {
 
     public Gui() {
 
-
+        init();
     }
 
     public abstract void init();
 
     public abstract void render(Graphics2D graphics, Batcher batcher, float delta);
+
+    public abstract void update(float delta);
 }
