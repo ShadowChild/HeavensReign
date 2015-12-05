@@ -18,11 +18,15 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class GuiTitleScreen extends Gui {
 
+    Texture button_sheet;
+
     @Override
     public void init() {
 
+        button_sheet = Texture.fromResource("assets/textures/gui/gui_button_sheet.png");
+
         // Initialise the elements
-        Texture buttonTexture = Texture.fromResource("assets/textures/gui/button.png");
+        Texture buttonTexture = DisplayUtils.createSubTexture(button_sheet, 0, 0, 500, 50);
         GuiElement optionsButton = new GuiButton(
                 (Display.getWidth() / 2) - buttonTexture.getWidth() / 2, 400,
                 new Vector2(buttonTexture.getWidth(), buttonTexture.getHeight()), "Options"
