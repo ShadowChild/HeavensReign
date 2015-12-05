@@ -3,6 +3,7 @@ package io.github.shadowchild.vdgame.utils;
 
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.graphics.opengl.Texture;
+import io.github.shadowchild.common.util.MathUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -32,10 +33,10 @@ public class DisplayUtils {
         float maxV; // max height
 
         // now for the calculations
-        minU = ((xPos * 100) / parentWidth) / 100;
-        maxU = ((width * 100) / parentWidth) / 100;
-        minV = ((yPos * 100) / parentHeight) / 100;
-        maxV = ((height * 100) / parentHeight) / 100;
+        minU = MathUtils.percentageAsDecimal(xPos, parentWidth);
+        maxU = MathUtils.percentageAsDecimal(width, parentWidth);
+        minV = MathUtils.percentageAsDecimal(yPos, parentHeight);
+        maxV = MathUtils.percentageAsDecimal(height, parentHeight);
 
         return parent.getSubTexture(minU, minV, maxU, maxV, width, height);
     }
