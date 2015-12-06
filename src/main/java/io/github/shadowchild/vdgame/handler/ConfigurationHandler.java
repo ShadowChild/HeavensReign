@@ -23,7 +23,7 @@ public class ConfigurationHandler {
 
         Settings.lastWindowX = conf.getInteger("Window", "Last Window X Co-ords", 0, null);
         Settings.lastWindowY = conf.getInteger("Window", "Last Window Y Co-ords", 0, null);
-        Settings.fullscreen = conf.getBoolean("Window", "Should Be Fullscreen?", true, null);
+        Settings.fullscreen = conf.getBoolean("Window", "Should Be Fullscreen?", false, null);
         Settings.vsync = conf.getBoolean("Window", "Use VSync?", true, null);
         Settings.aspectRatio = conf.getString("Window", "Aspect Ratio", "16:9",
                 "Leave the backslash in or the game may crash"
