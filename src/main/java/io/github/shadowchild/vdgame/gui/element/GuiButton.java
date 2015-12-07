@@ -21,11 +21,6 @@ public class GuiButton extends GuiElement {
         super(x, y, size);
         this.string = string;
     }
-
-    public GuiButton(float x, float y, Vector2 size, GuiString string) {
-
-        this(x, y, size, string);
-    }
     
     public GuiButton(float x, float y, Vector2 size, String text) {
         
@@ -81,11 +76,12 @@ public class GuiButton extends GuiElement {
         graphics.drawTexture(getTexture(), this.x, this.y);
         
         // get the coords for the center of the button
-        float centerX = DisplayUtils.getCenterCoords().getLeft() - (size.getX() / 2);
-        float centerY = DisplayUtils.getCenterCoords().getRight() - (size.getY() / 2);
+        float centerX = x + (size.getX() / 2);
+        float centerY = y + (size.getY() / 2);
         
-        // init corerct coord values
+        // init correct coord values
         float correctX, correctY;
+        String toRender;
         
         // check if the GuiString value exists
         if(string != null) {
@@ -93,16 +89,20 @@ public class GuiButton extends GuiElement {
             // set values from the GuiString
             correctX = centerX - (string.getFont().getWidth(string.getText()) / 2);
             correctY = centerY - (string.getFont().getHeight() / 2);
+
+            graphics.setFont(string.getFont());
+            toRender = string.getText();
         } else {
             
             // set values from the string & font
             correctX = centerX - (font.getWidth(text) / 2);
             correctY = centerY - (font.getHeight() / 2);
+            graphics.setFont(font);
+            toRender = text;
         }
         
-        // set the font and then draw it
-        graphics.setFont(string.getFont());
-        graphics.drawString(string.getText(), correctX, correctY);
+        // finally draw the string
+        graphics.drawString(toRender, correctX, correctY);
     }
 
     @Override

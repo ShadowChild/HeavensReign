@@ -5,7 +5,6 @@ import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.IFont;
-import com.shc.silenceengine.math.Vector2;
 
 /**
  * Created by Zach Piddock on 04/12/2015.
@@ -17,11 +16,11 @@ public class GuiString extends GuiElement {
 
     public GuiString(float x, float y, String text) {
 
-        super(x, y, size);
+        super(x, y);
         this.text = text;
     }
 
-    public GuiButton(float x, float y, String text, IFont font) {
+    public GuiString(float x, float y, String text, IFont font) {
 
         this(x, y, text);
         this.font = font;
