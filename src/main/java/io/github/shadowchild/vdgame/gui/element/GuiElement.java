@@ -25,6 +25,13 @@ public abstract class GuiElement {
         this.size = size;
         init();
     }
+    
+    public GuiElement(float x, float y) {
+        
+        this.x = x;
+        this.y = y;
+        init();
+    }
 
     public abstract void init();
 
