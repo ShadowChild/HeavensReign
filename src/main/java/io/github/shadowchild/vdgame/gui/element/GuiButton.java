@@ -13,6 +13,8 @@ import com.shc.silenceengine.math.Vector2;
 public class GuiButton extends GuiElement {
 
     private GuiString string;
+    private String text;
+    private IFont font;
 
     public GuiButton(float x, float y, Vector2 size, GuiString string) {
 
@@ -23,6 +25,38 @@ public class GuiButton extends GuiElement {
     public GuiButton(float x, float y, Vector2 size, GuiString string) {
 
         this(x, y, size, string);
+    }
+    
+    public GuiButton(float x, float y, Vector2 size, String text) {
+        
+        this(x, y, size, text, SilenceEngine.graphics.getGraphics2D().getFont());
+    }
+    
+    public GuiButton(float x, float y, Vector2 size, String text, IFont font) {
+        
+        super(x, y, size);
+        this.text = text;
+        this.font = font;
+    }
+    
+    public String getText() {
+        
+        return text;
+    }
+    
+    public void setText(String text) {
+        
+        this.text = text;
+    }
+    
+    public IFont getFont() {
+        
+        return font;
+    }
+    
+    public void setFont(IFont font) {
+        
+        this.font = font;
     }
 
     public GuiString getString() {
@@ -46,11 +80,25 @@ public class GuiButton extends GuiElement {
         // draw the button texture
         graphics.drawTexture(getTexture(), this.x, this.y);
         
-        // find the correct x and y coords for the string
+        // get the coords for the center of the button
         float centerX = DisplayUtils.getCenterCoords().getLeft() - (size.getX() / 2);
         float centerY = DisplayUtils.getCenterCoords().getRight() - (size.getY() / 2);
-        float correctX = centerX - (string.getFont().getWidth(string.getText()) / 2);
-        float correctY = centerY - (string.getFont().getHeight() / 2);
+        
+        // init corerct coord values
+        float correctX, correctY;
+        
+        // check if the GuiString value exists
+        if(string != null) {
+            
+            // set values from the GuiString
+            correctX = centerX - (string.getFont().getWidth(string.getText()) / 2);
+            correctY = centerY - (string.getFont().getHeight() / 2);
+        } else {
+            
+            // set values from the string & font
+            correctX = centerX - (font.getWidth(text) / 2);
+            correctY = centerY - (font.getHeight() / 2);
+        }
         
         // set the font and then draw it
         graphics.setFont(string.getFont());
