@@ -55,15 +55,7 @@ public class GuiTitleScreen extends Gui {
         graphics.fillRect(fixedCoords, size.getX(), size.getY());
 
         // draw the elements
-        for(GuiElement element : guiElements) {
-
-            if(element instanceof GuiButton) {
-
-                graphics.drawTexture(element.getTexture(), element.x, element.y);
-            } else {
-
-            }
-        }
+        for(GuiElement element : guiElements) element.render(graphics, batcher, delta);
     }
 
     @Override
