@@ -12,39 +12,27 @@ import com.shc.silenceengine.math.Vector2;
  */
 public class GuiButton extends GuiElement {
 
-    private String text;
-    private IFont font = SilenceEngine.graphics.getGraphics2D().getFont();
+    private GuiString string;
 
-    public GuiButton(float x, float y, Vector2 size, String text) {
+    public GuiButton(float x, float y, Vector2 size, GuiString string) {
 
         super(x, y, size);
-        this.text = text;
+        this.string = string;
     }
 
-    public GuiButton(float x, float y, Vector2 size, String text, IFont font) {
+    public GuiButton(float x, float y, Vector2 size, GuiString string) {
 
-        this(x, y, size, text);
-        this.font = font;
+        this(x, y, size, string);
     }
 
-    public String getText() {
+    public GuiString getString() {
 
-        return text;
+        return string;
     }
 
-    public void setText(String text) {
+    public void setString(GuiString string) {
 
-        this.text = text;
-    }
-
-    public IFont getFont() {
-
-        return font;
-    }
-
-    public void setFont(IFont font) {
-
-        this.font = font;
+        this.string = string;
     }
 
     @Override
@@ -55,6 +43,18 @@ public class GuiButton extends GuiElement {
     @Override
     public void render(Graphics2D graphics, Batcher batcher, float delta) {
 
+        // draw the button texture
+        graphics.drawTexture(getTexture(), this.x, this.y);
+        
+        // find the correct x and y coords for the string
+        float centerX = DisplayUtils.getCenterCoords().getLeft() - (size.getX() / 2);
+        float centerY = DisplayUtils.getCenterCoords().getRight() - (size.getY() / 2);
+        float correctX = centerX - (string.getFont().getWidth(string.getText()) / 2);
+        float correctY = centerY - (string.getFont().getHeight() / 2);
+        
+        // set the font and then draw it
+        graphics.setFont(string.getFont());
+        graphics.drawString(string.getText(), correctX, correctY);
     }
 
     @Override
