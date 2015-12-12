@@ -106,7 +106,7 @@ public class GuiButton extends GuiElement {
     }
 
     @Override
-    public void update(float delta) {
+    public void doUpdate(float delta) {
 
     }
 }

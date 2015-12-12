@@ -31,7 +31,13 @@ public class Main extends Game {
     // Initialize the resources
     public void init() {
 
+        // set the game state
         setGameState(new TitleScreenState());
+
+        // post initialisation
+//        Display.getWindow().setKeyCallback(InputHandler::keyCallback);
+//        Display.getWindow().setCursorPositionCallback(InputHandler::cursorPosCallback);
+//        Display.getWindow().setMouseButtonCallback(InputHandler::mouseInputCallback);
     }
 
     // Update game logic

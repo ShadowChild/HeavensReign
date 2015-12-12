@@ -34,7 +34,7 @@ public class GuiTitleScreen extends Gui {
         optionsButton.setTexture(buttonTexture);
 
         // Add the elements to the arraylist
-        guiElements.add(optionsButton);
+        forgroundElements.add(optionsButton);
     }
 
     @Override
@@ -55,11 +55,16 @@ public class GuiTitleScreen extends Gui {
         graphics.fillRect(fixedCoords, size.getX(), size.getY());
 
         // draw the elements
-        for(GuiElement element : guiElements) element.render(graphics, batcher, delta);
+        for(GuiElement element : forgroundElements) element.render(graphics, batcher, delta);
     }
 
     @Override
-    public void update(float delta) {
+    public void doUpdate(float delta) {
+
+    }
+
+    @Override
+    public void onAction(GuiElement element, Action action, int button, int mods) {
 
     }
 }
