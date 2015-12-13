@@ -5,6 +5,8 @@ import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.IFont;
+import com.shc.silenceengine.graphics.Sprite;
+import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.math.Vector2;
 
 /**
@@ -16,22 +18,24 @@ public class GuiButton extends GuiElement {
     private String text;
     private IFont font;
 
-    public GuiButton(float x, float y, Vector2 size, GuiString string) {
+    public GuiButton(float x, float y, Vector2 size, GuiString string, Texture texture) {
 
         super(x, y, size);
         this.string = string;
+        this.setTexture(texture);
     }
     
-    public GuiButton(float x, float y, Vector2 size, String text) {
+    public GuiButton(float x, float y, Vector2 size, String text, Texture texture) {
         
-        this(x, y, size, text, SilenceEngine.graphics.getGraphics2D().getFont());
+        this(x, y, size, text, SilenceEngine.graphics.getGraphics2D().getFont(), texture);
     }
     
-    public GuiButton(float x, float y, Vector2 size, String text, IFont font) {
+    public GuiButton(float x, float y, Vector2 size, String text, IFont font, Texture texture) {
         
         super(x, y, size);
         this.text = text;
         this.font = font;
+        this.setTexture(texture);
     }
     
     public String getText() {
@@ -67,13 +71,14 @@ public class GuiButton extends GuiElement {
     @Override
     public void init() {
 
+        sprites.add(new Sprite(getTexture()));
     }
 
     @Override
     public void render(Graphics2D graphics, Batcher batcher, float delta) {
 
         // draw the button texture
-        graphics.drawTexture(getTexture(), this.x, this.y);
+//        graphics.drawTexture(getTexture(), this.x, this.y);
         
         // get the coords for the center of the button
         float centerX = x + (size.getX() / 2);

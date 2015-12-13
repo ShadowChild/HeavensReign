@@ -12,6 +12,8 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class DisplayUtils {
 
+    public static final Texture LOGO = Texture.fromResource("assets/logo.png");
+
     public static Pair<Integer, Integer> getDisplaySize() {
 
         return new ImmutablePair<>(Display.getWidth(), Display.getHeight());

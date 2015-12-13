@@ -1,6 +1,7 @@
 package io.github.shadowchild.vdgame.handler;
 
 
+import com.shc.silenceengine.core.Display;
 import io.github.shadowchild.common.config.Config;
 import io.github.shadowchild.common.config.Configuration;
 import io.github.shadowchild.vdgame.utils.Settings;
@@ -24,9 +25,23 @@ public class ConfigurationHandler {
         Settings.lastWindowX = conf.getInteger("Window", "Last Window X Co-ords", 0, null);
         Settings.lastWindowY = conf.getInteger("Window", "Last Window Y Co-ords", 0, null);
         Settings.fullscreen = conf.getBoolean("Window", "Should Be Fullscreen?", false, null);
-        Settings.vsync = conf.getBoolean("Window", "Use VSync?", true, null);
+        Settings.vsync = conf.getBoolean("Window", "Use VSync?", false, null);
         Settings.aspectRatio = conf.getString("Window", "Aspect Ratio", "16:9",
                 "Leave the backslash in or the game may crash"
         );
+        Settings.resizable = conf.getBoolean("Window", "Resizable Window?", false, null);
+    }
+
+    public static void reloadConfig() {
+
+        conf = new Configuration(Configuration.ConfigType.INI,
+                "config/General"
+        ).load();
+
+        handle();
+
+        Display.setFullScreen(Settings.fullscreen);
+        Display.setVSync(Settings.vsync);
+        Display.setResizable(Settings.resizable);
     }
 }

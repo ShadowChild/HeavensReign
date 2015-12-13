@@ -4,6 +4,7 @@ package io.github.shadowchild.vdgame.gui.screen;
 import com.shc.silenceengine.core.IUpdatable;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
+import com.shc.silenceengine.graphics.Sprite;
 import io.github.shadowchild.vdgame.gui.element.GuiElement;
 
 import java.util.ArrayList;
@@ -15,10 +16,18 @@ public abstract class Gui implements IUpdatable {
 
     ArrayList<GuiElement> backgroundElements = new ArrayList<>();
     ArrayList<GuiElement> forgroundElements = new ArrayList<>();
+    ArrayList<Sprite> sprites = new ArrayList<>();
 
     public Gui() {
 
         init();
+        postInit();
+    }
+
+    private void postInit() {
+
+        backgroundElements.forEach(GuiElement::init);
+        forgroundElements.forEach(GuiElement::init);
     }
 
     public abstract void init();

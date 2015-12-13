@@ -10,4 +10,5 @@ public class Settings {
     public static boolean fullscreen;
     public static boolean vsync;
     public static String aspectRatio;
+    public static boolean resizable;
 }
