@@ -5,11 +5,8 @@ import com.shc.silenceengine.core.IUpdatable;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Paint;
-import com.shc.silenceengine.graphics.Sprite;
 import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.math.Vector2;
-
-import java.util.ArrayList;
 
 /**
  * Created by Zach Piddock on 04/12/2015.
@@ -21,8 +18,6 @@ public abstract class GuiElement implements IUpdatable {
 
     private Texture texture;
     private Paint paint;
-
-    ArrayList<Sprite> sprites = new ArrayList<>();
 
     public GuiElement(float x, float y, Vector2 size) {
 
@@ -65,11 +60,6 @@ public abstract class GuiElement implements IUpdatable {
     public void setPaint(Paint paint) {
 
         this.paint = paint;
-    }
-
-    public ArrayList<Sprite> getSprites() {
-
-        return sprites;
     }
 
     public boolean intersects(float x, float y) {

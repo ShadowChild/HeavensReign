@@ -6,7 +6,6 @@ import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.utils.Logger;
-import io.github.shadowchild.vdgame.Main;
 import io.github.shadowchild.vdgame.gui.screen.Gui;
 import io.github.shadowchild.vdgame.gui.screen.GuiTitleScreen;
 
@@ -32,8 +31,6 @@ public class TitleScreenState extends GameState {
 
     @Override
     public void render(float delta, Batcher batcher) {
-
-        Main.camera.apply();
 
         // Get the graphics
         Graphics2D graphics = SilenceEngine.graphics.getGraphics2D();

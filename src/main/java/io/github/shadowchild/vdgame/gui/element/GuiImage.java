@@ -3,7 +3,6 @@ package io.github.shadowchild.vdgame.gui.element;
 
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
-import com.shc.silenceengine.graphics.Sprite;
 import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.math.Vector2;
 
@@ -21,12 +20,12 @@ public class GuiImage extends GuiElement {
     @Override
     public void init() {
 
-        sprites.add(new Sprite(getTexture()));
     }
 
     @Override
     public void render(Graphics2D graphics, Batcher batcher, float delta) {
 
+        graphics.drawTexture(getTexture(), x, y);
     }
 
     @Override

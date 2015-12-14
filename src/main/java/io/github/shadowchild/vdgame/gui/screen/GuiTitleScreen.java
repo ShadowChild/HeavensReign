@@ -7,8 +7,6 @@ import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Color;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Paint;
-import com.shc.silenceengine.graphics.Sprite;
-import com.shc.silenceengine.graphics.SpriteBatch;
 import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.math.Vector2;
 import io.github.shadowchild.vdgame.gui.element.GuiButton;
@@ -34,9 +32,9 @@ public class GuiTitleScreen extends Gui {
         GuiElement optionsButton = new GuiButton(
                 (Display.getWidth() / 2) - buttonTexture.getWidth() / 2, 400,
                 new Vector2(buttonTexture.getWidth(), buttonTexture.getHeight()), "Options",
-                SilenceEngine.graphics.getGraphics2D().getFont(),
-                buttonTexture
+                SilenceEngine.graphics.getGraphics2D().getFont()
         );
+        optionsButton.setTexture(buttonTexture);
 
         Pair<Integer, Integer> centerCoords = DisplayUtils.getCenterCoords();
         Vector2 size = new Vector2(DisplayUtils.LOGO.getWidth(), DisplayUtils.LOGO.getHeight());
@@ -58,17 +56,14 @@ public class GuiTitleScreen extends Gui {
         graphics.fillRect(new Vector2(0, 0), Display.getWidth(), Display.getHeight());
 
         // draw the elements
-        SpriteBatch batch = SilenceEngine.graphics.getSpriteBatch();
+        for(GuiElement e : backgroundElements) {
 
-        batch.begin();
-        for(GuiElement element : forgroundElements) {
-            for(Sprite sprite : element.getSprites()) {
-
-                batch.addSprite(sprite, element.getPosition());
-            }
-            element.render(graphics, batcher, delta);
+            e.render(graphics, batcher, delta);
         }
-        batch.end();
+        for(GuiElement e : forgroundElements) {
+
+            e.render(graphics, batcher, delta);
+        }
     }
 
     @Override

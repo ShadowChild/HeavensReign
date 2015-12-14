@@ -6,7 +6,6 @@ import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.core.gameloops.FixedCatchingUpGameLoop;
 import com.shc.silenceengine.graphics.Batcher;
-import com.shc.silenceengine.graphics.cameras.OrthoCam;
 import com.shc.silenceengine.input.Keyboard;
 import io.github.shadowchild.common.util.Utils;
 import io.github.shadowchild.vdgame.handler.ConfigurationHandler;
@@ -23,8 +22,6 @@ public class Main extends Game {
     public static final int HEIGHT = 768;
     public static final int WIDTH = (HEIGHT * 16) / 9;
 
-    public static OrthoCam camera;
-
     // Initialise this before so that the start method wont resize the display
     public void preInit() {
 
@@ -36,8 +33,6 @@ public class Main extends Game {
 
     // Initialize the resources
     public void init() {
-
-        camera = new OrthoCam().initProjection(Display.getWidth(), Display.getHeight());
 
         // set the game state
         setGameState(new TitleScreenState());
@@ -67,7 +62,6 @@ public class Main extends Game {
     // Handle window resize event
     public void resize() {
 
-        camera.initProjection(Display.getWidth(), Display.getHeight());
     }
 
     // Dispose the resources
