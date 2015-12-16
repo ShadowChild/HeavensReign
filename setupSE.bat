@@ -1,2 +1,2 @@
 @ECHO OFF
-call gradlew.bat clean build javadoc
+call gradlew clean build javadoc
