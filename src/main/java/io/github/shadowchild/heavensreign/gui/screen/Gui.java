@@ -1,11 +1,11 @@
-package io.github.shadowchild.vdgame.gui.screen;
+package io.github.shadowchild.heavensreign.gui.screen;
 
 
 import com.shc.silenceengine.core.IUpdatable;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Sprite;
-import io.github.shadowchild.vdgame.gui.element.GuiElement;
+import io.github.shadowchild.heavensreign.gui.element.GuiElement;
 
 import java.util.ArrayList;
 

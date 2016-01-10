@@ -1,4 +1,4 @@
-package io.github.shadowchild.vdgame.states;
+package io.github.shadowchild.heavensreign.states;
 
 
 import com.shc.silenceengine.core.GameState;
@@ -6,8 +6,8 @@ import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.utils.Logger;
-import io.github.shadowchild.vdgame.gui.screen.Gui;
-import io.github.shadowchild.vdgame.gui.screen.GuiTitleScreen;
+import io.github.shadowchild.heavensreign.gui.screen.Gui;
+import io.github.shadowchild.heavensreign.gui.screen.GuiTitleScreen;
 
 /**
  * Created by Zach Piddock on 28/10/2015.

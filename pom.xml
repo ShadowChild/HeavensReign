@@ -96,6 +96,13 @@
                 <version>2.6</version>
                 <configuration>
                     <outputDirectory>${basedir}/build</outputDirectory>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addClasspath>false</addClasspath>
+                            <mainClass>io.github.shadowchild.heavensreign.Main</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>

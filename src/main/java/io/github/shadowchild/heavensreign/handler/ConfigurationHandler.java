@@ -1,10 +1,10 @@
-package io.github.shadowchild.vdgame.handler;
+package io.github.shadowchild.heavensreign.handler;
 
 
 import com.shc.silenceengine.core.Display;
 import io.github.shadowchild.common.config.Config;
 import io.github.shadowchild.common.config.Configuration;
-import io.github.shadowchild.vdgame.utils.Settings;
+import io.github.shadowchild.heavensreign.utils.Settings;
 
 /**
  * Created by Zach Piddock on 03/11/2015.

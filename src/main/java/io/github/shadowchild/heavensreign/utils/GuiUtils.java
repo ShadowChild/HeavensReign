@@ -1,9 +1,9 @@
-package io.github.shadowchild.vdgame.utils;
+package io.github.shadowchild.heavensreign.utils;
 
 
 import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.math.Vector2;
-import io.github.shadowchild.vdgame.gui.element.GuiButton;
+import io.github.shadowchild.heavensreign.gui.element.GuiButton;
 
 import java.util.ArrayList;
 import java.util.List;

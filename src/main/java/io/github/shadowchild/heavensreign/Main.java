@@ -1,4 +1,4 @@
-package io.github.shadowchild.vdgame;
+package io.github.shadowchild.heavensreign;
 
 
 import com.shc.silenceengine.core.Display;
@@ -8,9 +8,9 @@ import com.shc.silenceengine.core.gameloops.FixedCatchingUpGameLoop;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.input.Keyboard;
 import io.github.shadowchild.common.util.Utils;
-import io.github.shadowchild.vdgame.handler.ConfigurationHandler;
-import io.github.shadowchild.vdgame.states.TitleScreenState;
-import io.github.shadowchild.vdgame.utils.Settings;
+import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
+import io.github.shadowchild.heavensreign.states.TitleScreenState;
+import io.github.shadowchild.heavensreign.utils.Settings;
 
 import javax.swing.*;
 

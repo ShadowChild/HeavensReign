@@ -1,4 +1,4 @@
-package io.github.shadowchild.vdgame.utils;
+package io.github.shadowchild.heavensreign.utils;
 
 
 import com.shc.silenceengine.core.Display;
