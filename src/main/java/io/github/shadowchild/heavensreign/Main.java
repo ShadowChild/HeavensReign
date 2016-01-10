@@ -9,6 +9,7 @@ import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.input.Keyboard;
 import io.github.shadowchild.common.util.Utils;
 import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
+import io.github.shadowchild.heavensreign.states.PauseableState;
 import io.github.shadowchild.heavensreign.states.TitleScreenState;
 import io.github.shadowchild.heavensreign.utils.Settings;
 
@@ -83,5 +84,15 @@ public class Main extends Game {
         int end = JOptionPane.showConfirmDialog(null, "End the game?", "Confirm Close", JOptionPane.YES_NO_OPTION);
         if(end == 0)
             Game.end();
+    }
+
+    public static PauseableState getGameState() {
+
+        return (PauseableState) Game.getGameState();
+    }
+
+    public static void setGameState(PauseableState state) {
+
+        Game.setGameState(state);
     }
 }

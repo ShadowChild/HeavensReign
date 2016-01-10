@@ -1,7 +1,6 @@
 package io.github.shadowchild.heavensreign.states;
 
 
-import com.shc.silenceengine.core.GameState;
 import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
@@ -12,7 +11,7 @@ import io.github.shadowchild.heavensreign.gui.screen.GuiTitleScreen;
 /**
  * Created by Zach Piddock on 28/10/2015.
  */
-public class TitleScreenState extends GameState {
+public class TitleScreenState extends PauseableState {
 
     private Gui gui;
 
