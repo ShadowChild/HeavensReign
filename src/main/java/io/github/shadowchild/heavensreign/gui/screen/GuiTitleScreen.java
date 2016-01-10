@@ -1,12 +1,12 @@
 package io.github.shadowchild.heavensreign.gui.screen;
 
 
+import com.shc.silenceengine.backend.lwjgl3.opengl.Texture;
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Color;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Paint;
-import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.math.Vector2;
 import io.github.shadowchild.heavensreign.gui.element.GuiButton;
 import io.github.shadowchild.heavensreign.gui.element.GuiElement;

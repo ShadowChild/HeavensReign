@@ -1,8 +1,8 @@
 package io.github.shadowchild.heavensreign.utils;
 
 
+import com.shc.silenceengine.backend.lwjgl3.opengl.Texture;
 import com.shc.silenceengine.core.Display;
-import com.shc.silenceengine.graphics.opengl.Texture;
 import io.github.shadowchild.common.util.MathUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
