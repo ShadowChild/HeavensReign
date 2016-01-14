@@ -7,6 +7,7 @@ before_install:
     - cd ../SilenceEngine
     - gradle clean build javadoc
     - cd ..
+    - mkdir ./libs
     - mkdir ./libs/SilenceEngine
     - mkdir ./libs/LWJGL
     - mkdir ./libs/ShadowCommon
