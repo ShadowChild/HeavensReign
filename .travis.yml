@@ -1,9 +1,14 @@
 language: java
 jdk:
     - oraclejdk8
-before_install: 
-    - chmod +x ./Setup.sh
-install: ./Setup.sh
+before_install:
+    - cd ./ShadowCommon
+    - mvnw clean install
+    - cd ../SilenceEngine
+    - gradlew clean build javadoc
+    - cp ./SilenceEngine/build/libs/SilenceEngine.jar ./libs/SilenceEngine/SilenceEngine.jar
+    - rsync ./SilenceEngine/libs ./libs/LWJGL
+    - rsync ./ShadowCommon/build ./libs/ShadowCommon
 cache:
   directories:
     - $HOME/.m2
