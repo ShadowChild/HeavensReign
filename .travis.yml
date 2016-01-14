@@ -2,18 +2,8 @@ language: java
 jdk:
     - oraclejdk8
 before_install:
-    - cd ./ShadowCommon
-    - mvn clean install
-    - cd ../SilenceEngine
-    - gradle clean build javadoc
-    - cd ..
-    - mkdir ./libs
-    - mkdir ./libs/SilenceEngine
-    - mkdir ./libs/LWJGL
-    - mkdir ./libs/ShadowCommon
-    - cp ./SilenceEngine/build/libs/SilenceEngine.jar ./libs/SilenceEngine/SilenceEngine.jar
-    - rsync ./SilenceEngine/libs ./libs/LWJGL
-    - rsync ./ShadowCommon/build ./libs/ShadowCommon
+    - chmod +x travis_install.sh
+    - travis_install.sh
 cache:
   directories:
     - $HOME/.m2
