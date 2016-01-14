@@ -3,10 +3,11 @@ jdk:
     - oraclejdk8
 before_install:
     - cd ./ShadowCommon
-    - ls -l
     - mvn clean install
     - cd ../SilenceEngine
     - gradle clean build javadoc
+    - cd ./SilenceEngine
+    - ls -l
     - cp ./SilenceEngine/build/libs/SilenceEngine.jar ./libs/SilenceEngine/SilenceEngine.jar
     - rsync ./SilenceEngine/libs ./libs/LWJGL
     - rsync ./ShadowCommon/build ./libs/ShadowCommon
