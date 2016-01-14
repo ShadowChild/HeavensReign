@@ -3,5 +3,4 @@
 Run ```setup.bat``` to initialise everything
 
 TODO:
-* Have setup shell scrips
-* Update Travis build configuration
+* Have setup shell scrips - Partially done, needs testing and updating accordingly
