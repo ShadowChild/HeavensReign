@@ -11,9 +11,9 @@ import com.shc.silenceengine.math.Vector2;
  */
 public class GuiImage extends GuiElement {
 
-    public GuiImage(Texture logo, Vector2 pos) {
+    public GuiImage(Texture logo, Vector2 location) {
 
-        super(pos.getX(), pos.getY(), new Vector2(logo.getWidth(), logo.getHeight()));
+        super(location, new Vector2(logo.getWidth(), logo.getHeight()));
         setTexture(logo);
     }
 
@@ -23,9 +23,9 @@ public class GuiImage extends GuiElement {
     }
 
     @Override
-    public void render(Graphics2D graphics, Batcher batcher, float delta) {
+    public void render(Graphics2D graphics, Batcher batcher) {
 
-        graphics.drawTexture(getTexture(), x, y);
+        graphics.drawTexture(getTexture(), location);
     }
 
     @Override

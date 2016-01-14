@@ -12,24 +12,22 @@ import com.shc.silenceengine.math.Vector2;
  */
 public class GuiButton extends GuiElement {
 
-    private GuiString string;
     private String text;
     private IFont font;
 
-    public GuiButton(float x, float y, Vector2 size, GuiString string) {
+    public GuiButton(Vector2 location, Vector2 size) {
 
-        super(x, y, size);
-        this.string = string;
+        super(location, size);
     }
     
-    public GuiButton(float x, float y, Vector2 size, String text) {
+    public GuiButton(Vector2 location, Vector2 size, String text) {
         
-        this(x, y, size, text, SilenceEngine.graphics.getGraphics2D().getFont());
+        this(location, size, text, SilenceEngine.graphics.getGraphics2D().getFont());
     }
     
-    public GuiButton(float x, float y, Vector2 size, String text, IFont font) {
+    public GuiButton(Vector2 location, Vector2 size, String text, IFont font) {
         
-        super(x, y, size);
+        super(location, size);
         this.text = text;
         this.font = font;
     }
@@ -54,52 +52,30 @@ public class GuiButton extends GuiElement {
         this.font = font;
     }
 
-    public GuiString getString() {
-
-        return string;
-    }
-
-    public void setString(GuiString string) {
-
-        this.string = string;
-    }
-
     @Override
     public void init() {
 
     }
 
     @Override
-    public void render(Graphics2D graphics, Batcher batcher, float delta) {
+    public void render(Graphics2D graphics, Batcher batcher) {
 
         // draw the button texture
-        graphics.drawTexture(getTexture(), this.x, this.y);
+        graphics.drawTexture(getTexture(), this.location.getX(), this.location.getY());
         
         // get the coords for the center of the button
-        float centerX = x + (size.getX() / 2);
-        float centerY = y + (size.getY() / 2);
+        float centerX = location.getX() + (size.getX() / 2);
+        float centerY = location.getY() + (size.getY() / 2);
         
         // init correct coord values
         float correctX, correctY;
         String toRender;
-        
-        // check if the GuiString value exists
-        if(string != null) {
-            
-            // set values from the GuiString
-            correctX = centerX - (string.getFont().getWidth(string.getText()) / 2);
-            correctY = centerY - (string.getFont().getHeight() / 2);
 
-            graphics.setFont(string.getFont());
-            toRender = string.getText();
-        } else {
-            
-            // set values from the string & font
-            correctX = centerX - (font.getWidth(text) / 2);
-            correctY = centerY - (font.getHeight() / 2);
-            graphics.setFont(font);
-            toRender = text;
-        }
+        // set values from the string & font
+        correctX = centerX - (font.getWidth(text) / 2);
+        correctY = centerY - (font.getHeight() / 2);
+        graphics.setFont(font);
+        toRender = text;
         
         // finally draw the string
         graphics.drawString(toRender, correctX, correctY);

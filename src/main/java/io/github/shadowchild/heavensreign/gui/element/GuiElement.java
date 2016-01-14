@@ -13,28 +13,26 @@ import com.shc.silenceengine.math.Vector2;
  */
 public abstract class GuiElement implements IUpdatable {
 
-    public float x, y;
+    public Vector2 location;
     public Vector2 size;
 
     private Texture texture;
     private Paint paint;
 
-    public GuiElement(float x, float y, Vector2 size) {
+    public GuiElement(Vector2 location, Vector2 size) {
 
-        this.x = x;
-        this.y = y;
+        this.location = location;
         this.size = size;
     }
     
-    public GuiElement(float x, float y) {
+    public GuiElement(Vector2 location) {
         
-        this.x = x;
-        this.y = y;
+        this.location = location;
     }
 
     public abstract void init();
 
-    public abstract void render(Graphics2D graphics, Batcher batcher, float delta);
+    public abstract void render(Graphics2D graphics, Batcher batcher);
 
     public abstract void doUpdate(float delta);
 
@@ -64,15 +62,15 @@ public abstract class GuiElement implements IUpdatable {
 
     public boolean intersects(float x, float y) {
 
-        if(x < this.x || y < this.y) return false;
+        if(x < this.location.getX() || y < this.location.getY()) return false;
 
-        if(x > (this.x + this.size.getX()) || y > (this.y + this.size.getY())) return false;
+        if(x > (this.location.getX() + this.size.getX()) || y > (this.location.getY() + this.size.getY())) return false;
 
         return true;
     }
 
     public Vector2 getPosition() {
 
-        return new Vector2(x, y);
+        return location;
     }
 }

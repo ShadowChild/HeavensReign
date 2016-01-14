@@ -35,7 +35,7 @@ public class TitleScreenState extends PauseableState {
         Graphics2D graphics = SilenceEngine.graphics.getGraphics2D();
 
         // Ask the gui to do the drawing
-        gui.render(graphics, batcher, delta);
+        gui.render(graphics, batcher);
     }
 
     @Override

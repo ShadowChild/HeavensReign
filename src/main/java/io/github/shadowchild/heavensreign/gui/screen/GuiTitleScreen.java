@@ -55,7 +55,7 @@ public class GuiTitleScreen extends Gui {
     }
 
     @Override
-    public void render(Graphics2D graphics, Batcher batcher, float delta) {
+    public void render(Graphics2D graphics, Batcher batcher) {
 
         // Draw the background
         graphics.setPaint(new Paint(Color.AZURE));
@@ -64,11 +64,11 @@ public class GuiTitleScreen extends Gui {
         // draw the elements
         for(GuiElement e : backgroundElements) {
 
-            e.render(graphics, batcher, delta);
+            e.render(graphics, batcher);
         }
         for(GuiElement e : forgroundElements) {
 
-            e.render(graphics, batcher, delta);
+            e.render(graphics, batcher);
         }
     }
 

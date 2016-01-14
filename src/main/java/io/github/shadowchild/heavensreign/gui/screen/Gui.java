@@ -32,13 +32,15 @@ public abstract class Gui implements IUpdatable {
 
     public abstract void init();
 
-    public abstract void render(Graphics2D graphics, Batcher batcher, float delta);
+    public abstract void render(Graphics2D graphics, Batcher batcher);
 
     public abstract void doUpdate(float delta);
 
     public abstract void onAction(GuiElement element, Action action, int button, int mods);
 
     public void update(float delta) {
+
+
 
         for(GuiElement e : forgroundElements) {
 
@@ -54,6 +56,8 @@ public abstract class Gui implements IUpdatable {
         HOVERING,
         LEAVING,
         MOUSE_DOWN,
-        MOUSE_UP
+        MOUSE_UP,
+        KEY_DOWN,
+        KEY_UP
     }
 }

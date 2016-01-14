@@ -31,7 +31,7 @@ public class GuiUtils {
 
             Vector2 size = new Vector2(buttonTexture.getWidth(), buttonTexture.getHeight());
 
-            GuiButton button = new GuiButton(correctedX, correctedY, size, options[i]);
+            GuiButton button = new GuiButton(new Vector2(correctedX, correctedY), size, options[i]);
             button.setTexture(buttonTexture);
 
             list.add(button);
