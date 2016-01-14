@@ -4,9 +4,9 @@ jdk:
 before_install:
     - cd ./ShadowCommon
     - ls -l
-    - mvnw clean install
+    - mvn clean install
     - cd ../SilenceEngine
-    - gradlew clean build javadoc
+    - gradle clean build javadoc
     - cp ./SilenceEngine/build/libs/SilenceEngine.jar ./libs/SilenceEngine/SilenceEngine.jar
     - rsync ./SilenceEngine/libs ./libs/LWJGL
     - rsync ./ShadowCommon/build ./libs/ShadowCommon
