@@ -6,7 +6,7 @@ before_install:
     - mvn clean install
     - cd ../SilenceEngine
     - gradle clean build javadoc
-    - cd build
+    - cd build/libs
     - ls -l
     - cp ./SilenceEngine/build/libs/SilenceEngine.jar ./libs/SilenceEngine/SilenceEngine.jar
     - rsync ./SilenceEngine/libs ./libs/LWJGL
