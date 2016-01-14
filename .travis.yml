@@ -3,6 +3,7 @@ jdk:
     - oraclejdk8
 before_install:
     - cd ./ShadowCommon
+    - ls -l
     - mvnw clean install
     - cd ../SilenceEngine
     - gradlew clean build javadoc
