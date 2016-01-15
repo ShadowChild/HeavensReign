@@ -7,17 +7,15 @@ set commonDir=%currentDir%\ShadowCommon
 set mainDir=%silenceDir%\..\
 
 :buildShadowCommon
-echo Copying Files...
-echo f | xcopy /y %currentDir%\setupSC.bat %commonDir%\setup.bat
+echo Building ShadowCommon...
 pushd %commonDir%
-call setup.bat
+call mvnw clean install
 popd
 
 :buildEngine
-echo Copying Files...
-echo f | xcopy /y %currentDir%\setupSE.bat %silenceDir%\setup.bat
+echo Building SilenceEngine...
 pushd %silenceDir%
-call setup.bat
+call gradlew clean build javadoc
 popd
 
 :copyLibs
@@ -28,6 +26,7 @@ robocopy %commonDir%\build\ %mainDir%\libs\ShadowCommon\
 
 :mvnInstall
 call mvnw clean install
+goto end
 
 :cleanup
 echo Cleaning Up...

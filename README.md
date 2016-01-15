@@ -4,4 +4,4 @@ Run ```setup.bat``` to initialise everything
 
 TODO:
 * Have setup shell scrips - Partially done, needs testing and updating accordingly
-* Have the travis config run a bash script instead of multiple commands
+* Have the setup script initialise submodules when run from a non-cloned repo
