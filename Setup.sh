@@ -11,7 +11,7 @@ MAINDIR=$COMMONDIR/../
 function setupSC {
   echo Building ShadowCommon...
   pushd $COMMONDIR
-  mvnw clean build install
+  mvnw clean install
   popd
 }
 

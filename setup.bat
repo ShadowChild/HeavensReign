@@ -26,12 +26,6 @@ robocopy %commonDir%\build\ %mainDir%\libs\ShadowCommon\
 
 :mvnInstall
 call mvnw clean install
-goto end
-
-:cleanup
-echo Cleaning Up...
-del %silenceDir%\setup.bat
-del %commonDir%\setup.bat
 
 :end
 pause
