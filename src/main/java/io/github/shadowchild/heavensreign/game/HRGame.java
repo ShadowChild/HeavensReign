@@ -1,24 +1,22 @@
-package io.github.shadowchild.heavensreign;
+package io.github.shadowchild.heavensreign.game;
 
 
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.core.SilenceEngine;
-import com.shc.silenceengine.core.gameloops.FixedCatchingUpGameLoop;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.input.Keyboard;
-import io.github.shadowchild.common.util.Utils;
 import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
+import io.github.shadowchild.heavensreign.states.InGameState;
 import io.github.shadowchild.heavensreign.states.PauseableState;
-import io.github.shadowchild.heavensreign.states.TitleScreenState;
 import io.github.shadowchild.heavensreign.utils.Settings;
 
 import javax.swing.*;
 
 /**
- * Created by Zach Piddock on 27/10/2015.
+ * Created by Zach Piddock on 16/01/2016.
  */
-public class Main extends Game {
+public class HRGame extends Game {
 
     public static final int HEIGHT = 768;
     public static final int WIDTH = (HEIGHT * 16) / 9;
@@ -36,7 +34,8 @@ public class Main extends Game {
     public void init() {
 
         // set the game state
-        setGameState(new TitleScreenState());
+//        setGameState(new TitleScreenState());
+        setGameState(new InGameState());
     }
 
     // Update game logic
@@ -68,15 +67,6 @@ public class Main extends Game {
     // Dispose the resources
     public void dispose() {
 
-    }
-
-    public static void main(String... args) {
-
-        Utils.initialise();
-        ConfigurationHandler.handle();
-
-        new Main().start(
-                new FixedCatchingUpGameLoop().setTargetUpdatesPerSecond(60).setMaxSkippedFrames(5));
     }
 
     public void disposeSafely() {
