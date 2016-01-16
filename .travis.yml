@@ -2,8 +2,7 @@ language: java
 jdk:
     - oraclejdk8
 before_install:
-    - chmod +x ./Tools/travis_install.sh
-    - ./Tools/travis_install.sh
+    - java -jar ./Tools/SetupSrc.jar
 cache:
   directories:
     - $HOME/.m2
