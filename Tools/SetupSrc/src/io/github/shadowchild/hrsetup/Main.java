@@ -24,8 +24,8 @@ import java.util.zip.ZipInputStream;
 public class Main {
 
     static String platform;
-    static File toolsDir = new File(".");
-    static File baseDir = new File(toolsDir, "../");
+    static File baseDir = new File(".");
+    static File toolsDir = new File(baseDir, "Tools");
     static File gitFile = new File(baseDir, ".git");
     static File scFolder = new File(baseDir, "ShadowCommon");
     static File seFolder = new File(baseDir, "SilenceEngine");
