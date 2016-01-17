@@ -32,15 +32,26 @@ public abstract class Gui implements IUpdatable {
 
     public abstract void init();
 
-    public abstract void render(Graphics2D graphics, Batcher batcher);
+    public void render(Graphics2D graphics, Batcher batcher) {
+
+        // draw the elements
+        for(GuiElement e : backgroundElements) {
+
+            if(e.isVisable()) e.render(graphics, batcher);
+        }
+        for(GuiElement e : forgroundElements) {
+
+            if(e.isVisable()) e.render(graphics, batcher);
+        }
+    }
+
+    public abstract void doRender(Graphics2D graphics, Batcher batcher);
 
     public abstract void doUpdate(float delta);
 
     public abstract void onAction(GuiElement element, Action action, int button, int mods);
 
     public void update(float delta) {
-
-
 
         for(GuiElement e : forgroundElements) {
 

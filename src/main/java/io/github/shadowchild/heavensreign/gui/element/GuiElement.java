@@ -19,6 +19,8 @@ public abstract class GuiElement implements IUpdatable {
     private Texture texture;
     private Paint paint;
 
+    private boolean isActive = true, isVisable = true;
+
     public GuiElement(Vector2 location, Vector2 size) {
 
         this.location = location;
@@ -72,5 +74,25 @@ public abstract class GuiElement implements IUpdatable {
     public Vector2 getPosition() {
 
         return location;
+    }
+
+    public boolean isActive() {
+
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+
+        isActive = active;
+    }
+
+    public boolean isVisable() {
+
+        return isVisable;
+    }
+
+    public void setVisable(boolean visable) {
+
+        isVisable = visable;
     }
 }

@@ -1,6 +1,3 @@
-Implement isActive and isVisable to gui elements
-Implement Mouse input callbacks - event, or poll on it's own thread?
-Implement Keyboard input callbacks - event, or poll on it's own thread?
 Implement mouse hooks in gui screens and gui elemnts
 Implement keyboard hooks in gui screens and gui elements
 
