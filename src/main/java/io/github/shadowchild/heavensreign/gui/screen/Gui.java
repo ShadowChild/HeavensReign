@@ -37,11 +37,11 @@ public abstract class Gui implements IUpdatable {
         // draw the elements
         for(GuiElement e : backgroundElements) {
 
-            if(e.isVisable()) e.render(graphics, batcher);
+            if(e.isVisible()) e.render(graphics, batcher);
         }
         for(GuiElement e : forgroundElements) {
 
-            if(e.isVisable()) e.render(graphics, batcher);
+            if(e.isVisible()) e.render(graphics, batcher);
         }
     }
 
