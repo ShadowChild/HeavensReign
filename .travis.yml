@@ -4,6 +4,8 @@ jdk:
 before_install:
     - chmod +x ./Tools/travis_install.sh
     - ./Tools/travis_install.sh
+install: true
+script: mvn install -DskipTests=true
 cache:
   directories:
     - $HOME/.m2
