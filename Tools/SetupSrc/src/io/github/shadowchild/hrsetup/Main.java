@@ -113,7 +113,7 @@ public class Main {
 
         // TODO: Add platform specific
         String mvnw = platform.equals("win") ? "mvnw.cmd" : "mvnw";
-        File mvnWrapper = new File(scFolder, "mvnw.cmd");
+        File mvnWrapper = new File(scFolder, mvnw);
 
         String[] command = { mvnWrapper.getCanonicalPath(), "clean", "install" };
         ProcessBuilder builder = new ProcessBuilder(command);
