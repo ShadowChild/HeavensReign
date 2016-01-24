@@ -34,15 +34,16 @@ public abstract class Gui implements IUpdatable {
 
     public void render(Graphics2D graphics, Batcher batcher) {
 
+        doRender(graphics, batcher);
+
         // draw the elements
-        for(GuiElement e : backgroundElements) {
+        backgroundElements.stream()
+                .filter(GuiElement::isVisible)
+                .forEach(e -> e.render(graphics, batcher));
 
-            if(e.isVisible()) e.render(graphics, batcher);
-        }
-        for(GuiElement e : forgroundElements) {
-
-            if(e.isVisible()) e.render(graphics, batcher);
-        }
+        forgroundElements.stream()
+                .filter(GuiElement::isVisible)
+                .forEach(e -> e.render(graphics, batcher));
     }
 
     public abstract void doRender(Graphics2D graphics, Batcher batcher);

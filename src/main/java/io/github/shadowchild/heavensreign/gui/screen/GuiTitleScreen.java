@@ -36,7 +36,7 @@ public class GuiTitleScreen extends Gui {
 
         button_sheet = Texture.fromResource("assets/textures/gui/gui_button_sheet.png");
 
-//        // Initialise the elements
+        // Initialise the elements
         Texture buttonTexture = DisplayUtils.createSubTexture(button_sheet, 0, 0, 500, 50);
 
         // TODO: Nicify this
@@ -47,7 +47,9 @@ public class GuiTitleScreen extends Gui {
         );
         GuiElement logo = new GuiImage(DisplayUtils.LOGO, fixedCoords);
 
-        List<GuiButton> buttons = GuiUtils.createButtonList(options, centerX, 400, buttonSpacing, buttonTexture);
+        List<GuiButton> buttons = GuiUtils.createButtonList(options, centerX, 400, buttonSpacing,
+                buttonTexture
+        );
 
         // Add the elements to the arraylist
         forgroundElements.addAll(buttons.stream().collect(Collectors.toList()));

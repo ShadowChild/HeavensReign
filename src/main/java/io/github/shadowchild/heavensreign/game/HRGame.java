@@ -7,8 +7,8 @@ import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.input.Keyboard;
 import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
-import io.github.shadowchild.heavensreign.states.InGameState;
 import io.github.shadowchild.heavensreign.states.PauseableState;
+import io.github.shadowchild.heavensreign.states.TitleScreenState;
 import io.github.shadowchild.heavensreign.utils.Settings;
 
 import javax.swing.*;
@@ -34,8 +34,8 @@ public class HRGame extends Game {
     public void init() {
 
         // set the game state
-//        setGameState(new TitleScreenState());
-        setGameState(new InGameState());
+         setGameState(new TitleScreenState());
+//        setGameState(new InGameState());
     }
 
     // Update game logic
@@ -71,14 +71,15 @@ public class HRGame extends Game {
 
     public void disposeSafely() {
 
-        int end = JOptionPane.showConfirmDialog(null, "End the game?", "Confirm Close", JOptionPane.YES_NO_OPTION);
-        if(end == 0)
-            Game.end();
+        int end = JOptionPane.showConfirmDialog(null, "End the game?", "Confirm Close",
+                JOptionPane.YES_NO_OPTION
+        );
+        if(end == 0) Game.end();
     }
 
     public static PauseableState getGameState() {
 
-        return (PauseableState) Game.getGameState();
+        return (PauseableState)Game.getGameState();
     }
 
     public static void setGameState(PauseableState state) {

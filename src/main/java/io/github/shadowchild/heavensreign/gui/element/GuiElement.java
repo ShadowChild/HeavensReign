@@ -26,9 +26,9 @@ public abstract class GuiElement implements IUpdatable {
         this.location = location;
         this.size = size;
     }
-    
+
     public GuiElement(Vector2 location) {
-        
+
         this.location = location;
     }
 
@@ -66,7 +66,9 @@ public abstract class GuiElement implements IUpdatable {
 
         if(x < this.location.getX() || y < this.location.getY()) return false;
 
-        if(x > (this.location.getX() + this.size.getX()) || y > (this.location.getY() + this.size.getY())) return false;
+        if(x > (this.location.getX() + this.size.getX()) || y > (this.location.getY() + this.size.getY())) {
+            return false;
+        }
 
         return true;
     }

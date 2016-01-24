@@ -17,7 +17,9 @@ public class Player extends Entity {
 
     public Player(IInventory inventory) {
 
-        super(new Sprite(Texture.fromResource("assets/textures/entity/player/player.png")), new Rectangle(256, 512));
+        super(new Sprite(Texture.fromResource("assets/textures/entity/player/player.png")),
+                new Rectangle(256, 512)
+        );
         this.inventory = inventory;
     }
 

@@ -19,36 +19,36 @@ public class GuiButton extends GuiElement {
 
         super(location, size);
     }
-    
+
     public GuiButton(Vector2 location, Vector2 size, String text) {
-        
+
         this(location, size, text, SilenceEngine.graphics.getGraphics2D().getFont());
     }
-    
+
     public GuiButton(Vector2 location, Vector2 size, String text, IFont font) {
-        
+
         super(location, size);
         this.text = text;
         this.font = font;
     }
-    
+
     public String getText() {
-        
+
         return text;
     }
-    
+
     public void setText(String text) {
-        
+
         this.text = text;
     }
-    
+
     public IFont getFont() {
-        
+
         return font;
     }
-    
+
     public void setFont(IFont font) {
-        
+
         this.font = font;
     }
 
@@ -62,11 +62,11 @@ public class GuiButton extends GuiElement {
 
         // draw the button texture
         graphics.drawTexture(getTexture(), this.location.getX(), this.location.getY());
-        
+
         // get the coords for the center of the button
         float centerX = location.getX() + (size.getX() / 2);
         float centerY = location.getY() + (size.getY() / 2);
-        
+
         // init correct coord values
         float correctX, correctY;
         String toRender;
@@ -76,7 +76,7 @@ public class GuiButton extends GuiElement {
         correctY = centerY - (font.getHeight() / 2);
         graphics.setFont(font);
         toRender = text;
-        
+
         // finally draw the string
         graphics.drawString(toRender, correctX, correctY);
     }

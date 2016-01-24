@@ -32,11 +32,17 @@
     <dependencies>
         <dependency>
             <groupId>io.github.shadowchild</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>common-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-<!-- LWJGL Libraries -->
+        <dependency>
+            <groupId>io.github.shadowchild</groupId>
+            <artifactId>common-opengl</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- LWJGL Libraries -->
         <dependency>
             <groupId>org.lwjgl</groupId>
             <artifactId>lwjgl</artifactId>

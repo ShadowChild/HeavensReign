@@ -34,9 +34,7 @@ public class ConfigurationHandler {
 
     public static void reloadConfig() {
 
-        conf = new Configuration(Configuration.ConfigType.INI,
-                "config/General"
-        ).load();
+        conf = new Configuration(Configuration.ConfigType.INI, "config/General").load();
 
         handle();
 
