@@ -136,7 +136,8 @@ public class Main {
 
         if(exitValue == 0) {
 
-            FileUtils.copyDirectory(new File(scFolder, "build"), new File(baseDir, "libs/ShadowCommon"));
+            FileUtils.copyDirectory(new File(scFolder, "common-core/build"), new File(baseDir, "libs/ShadowCommon/core"));
+            FileUtils.copyDirectory(new File(scFolder, "common-opengl/build"), new File(baseDir, "libs/ShadowCommon/opengl"));
         }
     }
 
