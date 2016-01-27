@@ -31,7 +31,7 @@ function copyLibs() {
   cp ./SilenceEngine/build/libs/SilenceEngine.jar ./libs/SilenceEngine/SilenceEngine.jar  
 }
 
-installSC()
-installSE()
-makeDirs()
-copyLibs()
+installSC
+installSE
+makeDirs
+copyLibs
