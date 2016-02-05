@@ -2,8 +2,8 @@ package io.github.shadowchild.heavensreign.handler;
 
 
 import com.shc.silenceengine.core.Display;
-import io.github.shadowchild.common.config.Config;
-import io.github.shadowchild.common.config.Configuration;
+import io.github.shadowchild.cybernize.config.Config;
+import io.github.shadowchild.cybernize.config.Configuration;
 import io.github.shadowchild.heavensreign.utils.Settings;
 
 /**

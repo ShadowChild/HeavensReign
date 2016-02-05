@@ -12,7 +12,7 @@ import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.utils.GameTimer;
 import com.shc.silenceengine.utils.Logger;
 import com.shc.silenceengine.utils.TimeUtils;
-import io.github.shadowchild.common.util.Utils;
+import io.github.shadowchild.cybernize.util.Utils;
 import io.github.shadowchild.heavensreign.game.HRGame;
 import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
 
