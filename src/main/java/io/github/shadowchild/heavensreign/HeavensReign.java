@@ -15,6 +15,7 @@ import com.shc.silenceengine.utils.TimeUtils;
 import io.github.shadowchild.cybernize.util.Utils;
 import io.github.shadowchild.heavensreign.game.HRGame;
 import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
+import org.lwjgl.system.Configuration;
 
 /**
  * Created by Zach Piddock on 27/10/2015.
@@ -27,6 +28,8 @@ public class HeavensReign extends Game {
     public static void main(String... args) {
 
         handleRuntime(args);
+        if(SilenceEngine.getPlatform() == SilenceEngine.Platform.LINUX_64 || SilenceEngine.getPlatform() == SilenceEngine.Platform.WINDOWS_64)
+            Configuration.LIBRARY_NAME_JEMALLOC.set("jemalloc");
 
         Utils.initialise();
         ConfigurationHandler.handle();
