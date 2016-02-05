@@ -27,7 +27,7 @@ public class Main {
     static File baseDir = new File(".");
     static File toolsDir = new File(baseDir, "Tools");
     static File gitFile = new File(baseDir, ".git");
-    static File scFolder = new File(baseDir, "ShadowCommon");
+    static File scFolder = new File(baseDir, "Cybernize");
     static File seFolder = new File(baseDir, "SilenceEngine");
     static CountDownLatch latch = new CountDownLatch(2);
 
@@ -40,7 +40,7 @@ public class Main {
 
             try {
 
-                Download scDownload = new Download(new URL("https://github.com/ShadowChild/ShadowCommon/archive/master.zip"), new DownloadObserver(), new File(toolsDir, "downloads/SC/"));
+                Download scDownload = new Download(new URL("https://github.com/ShadowChild/Cybernize/archive/master.zip"), new DownloadObserver(), new File(toolsDir, "downloads/Cybernize/"));
                 Download seDownload = new Download(new URL("https://github.com/sriharshachilakapati/SilenceEngine/archive/master.zip"), new DownloadObserver(), new File(toolsDir, "downloads/SE/"));
 
                 scDownload.download();
@@ -48,13 +48,13 @@ public class Main {
 
                 latch.await();
 
-                File scZip = new File(toolsDir, "downloads/SC/master.zip");
+                File scZip = new File(toolsDir, "downloads/Cybernize/master.zip");
                 File seZip = new File(toolsDir, "downloads/SE/master.zip");
 
                 unZipIt(scZip.getAbsolutePath(), new File(toolsDir, "downloads/temp/").getAbsolutePath());
                 unZipIt(seZip.getAbsolutePath(), new File(toolsDir, "downloads/temp/").getAbsolutePath());
 
-                FileUtils.copyDirectory(new File(toolsDir, "downloads/temp/ShadowCommon-master"), scFolder, true);
+                FileUtils.copyDirectory(new File(toolsDir, "downloads/temp/Cybernize-master"), scFolder, true);
                 FileUtils.copyDirectory(new File(toolsDir, "downloads/temp/SilenceEngine-master"), seFolder, true);
 
                 FileUtils.deleteDirectory(new File(toolsDir, "download"));
@@ -136,8 +136,8 @@ public class Main {
 
         if(exitValue == 0) {
 
-            FileUtils.copyDirectory(new File(scFolder, "common-core/build"), new File(baseDir, "libs/ShadowCommon/core"));
-            FileUtils.copyDirectory(new File(scFolder, "common-opengl/build"), new File(baseDir, "libs/ShadowCommon/opengl"));
+            FileUtils.copyDirectory(new File(scFolder, "cybernize-core/build"), new File(baseDir, "libs/Cybernize/core"));
+            FileUtils.copyDirectory(new File(scFolder, "cybernize-opengl/build"), new File(baseDir, "libs/Cybernize/opengl"));
         }
     }
 

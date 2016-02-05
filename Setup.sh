@@ -4,29 +4,29 @@
 set +v
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-SILENCEDIR=$DIR/SilenceEngine
-COMMONDIR=$DIR/ShadowCommon
-MAINDIR=$COMMONDIR/../
+SILENCEDIR=${DIR}/SilenceEngine
+COMMONDIR=${DIR}/ShadowCommon
+MAINDIR=${COMMONDIR}/../
 
 function setupSC {
   echo Building ShadowCommon...
-  pushd $COMMONDIR
+  pushd ${COMMONDIR}
   mvnw clean install
   popd
 }
 
 function setupSE {
   echo Building SilenceEngine...
-  pushd $SILENCEDIR
+  pushd ${SILENCEDIR}
   graldew clean build javadoc
   popd
 }
 
 function copyLibs {
   echo Copying libs...
-  cp $SILENCEDIR/build/libs/SilenceEngine.jar $MAINDIR/libs/SilenceEngine/SilenceEngine.jar
-  rsync $SILENCEDIR/libs $MAINDIR/libs/LWJGL
-  rsync $SHADOWDIR/build $MAINDIR/libs/ShadowCommon
+  cp ${SILENCEDIR}/build/libs/SilenceEngine.jar ${MAINDIR}/libs/SilenceEngine/SilenceEngine.jar
+  rsync ${SILENCEDIR}/libs ${MAINDIR}/libs/LWJGL
+  rsync ${SHADOWDIR}/build ${MAINDIR}/libs/ShadowCommon
 }
 
 setupSC

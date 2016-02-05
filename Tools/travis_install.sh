@@ -2,7 +2,7 @@
 
 function installSC() {
   
-  cd ./ShadowCommon
+  cd ./Cybernize
   mvn clean install
   cd ..
 }
