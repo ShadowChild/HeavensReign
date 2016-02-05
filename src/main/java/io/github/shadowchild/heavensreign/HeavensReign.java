@@ -5,6 +5,7 @@ import com.shc.silenceengine.backend.lwjgl3.opengl.GL3Context;
 import com.shc.silenceengine.core.Display;
 import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.core.GameLoop;
+import com.shc.silenceengine.core.GameState;
 import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.core.SilenceException;
 import com.shc.silenceengine.graphics.Graphics2D;
@@ -20,12 +21,58 @@ import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
  */
 public class HeavensReign extends Game {
 
+    static boolean hasTestCase = false;
+    static String testCaseClass = "";
+
     public static void main(String... args) {
+
+        handleRuntime(args);
 
         Utils.initialise();
         ConfigurationHandler.handle();
 
         new HRGame().start(new HRGameLoop());
+    }
+
+    private static void handleRuntime(String... args) {
+
+        if(args.length > 0) {
+
+            for(int i = 0; i < args.length; i++) {
+
+                switch(args[i]) {
+
+                    case "--testCase": {
+
+                        hasTestCase = true;
+                        testCaseClass = args[i + 1];
+                        break;
+                    }
+
+                    default: break;
+                }
+            }
+        }
+    }
+
+    public static GameState getTestCase() {
+
+        try {
+
+            Class clazz = Class.forName(testCaseClass);
+
+            Object obj = clazz.newInstance();
+            if(!(obj instanceof GameState)) {
+
+                return null;
+            }
+            else return (GameState)obj;
+        } catch(ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     static class HRGameLoop extends GameLoop {

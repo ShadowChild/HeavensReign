@@ -6,6 +6,7 @@ import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.input.Keyboard;
+import io.github.shadowchild.heavensreign.HeavensReign;
 import io.github.shadowchild.heavensreign.handler.ConfigurationHandler;
 import io.github.shadowchild.heavensreign.states.InGameState;
 import io.github.shadowchild.heavensreign.states.PauseableState;
@@ -33,9 +34,15 @@ public class HRGame extends Game {
     // Initialize the resources
     public void init() {
 
-        // set the game state
-//        setGameState(new TitleScreenState());
-        setGameState(new InGameState());
+        if(HeavensReign.getTestCase() != null) {
+
+            setGameState(HeavensReign.getTestCase());
+        } else {
+
+            // set the game state
+            //setGameState(new TitleScreenState());
+            setGameState(new InGameState());
+        }
     }
 
     // Update game logic
