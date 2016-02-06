@@ -21,9 +21,9 @@ public class InGameState extends PauseableState {
     @Override
     public void onEnter() {
 
-        mainScene = new GameScene();
-        cam = new OrthoCam();
         player = new Player(new PlayerInventory());
+        mainScene = new GameScene(player);
+        cam = new OrthoCam();
         mainScene.addChild(player);
     }
 

@@ -28,6 +28,7 @@ public class HeavensReign extends Game {
     public static void main(String... args) {
 
         handleRuntime(args);
+        // This is a temporary fix and will be removed once LWJGL fixes this
         if(SilenceEngine.getPlatform() == SilenceEngine.Platform.LINUX_64 || SilenceEngine.getPlatform() == SilenceEngine.Platform.WINDOWS_64)
             Configuration.LIBRARY_NAME_JEMALLOC.set("jemalloc");
 
@@ -60,19 +61,21 @@ public class HeavensReign extends Game {
 
     public static GameState getTestCase() {
 
-        try {
+        if(!testCaseClass.isEmpty()) {
 
-            Class clazz = Class.forName(testCaseClass);
+            try {
 
-            Object obj = clazz.newInstance();
-            if(!(obj instanceof GameState)) {
+                Class clazz = Class.forName(testCaseClass);
 
-                return null;
+                Object obj = clazz.newInstance();
+                if(!(obj instanceof GameState)) {
+
+                    return null;
+                } else return (GameState)obj;
+            } catch(ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+
+                e.printStackTrace();
             }
-            else return (GameState)obj;
-        } catch(ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-
-            e.printStackTrace();
         }
 
         return null;
@@ -142,10 +145,12 @@ public class HeavensReign extends Game {
             // The Game Loop
             loop:
             while(true) {
+
                 // Start a frame in the game loop
                 SilenceEngine.getInstance().beginFrame();
 
                 if(Display.isCloseRequested()) {
+
                     stop();
                     break;
                 }
@@ -153,6 +158,7 @@ public class HeavensReign extends Game {
                 if(!isRunning()) break;
 
                 if(Display.wasResized()) {
+
                     GL3Context.viewport(0, 0, Display.getWidth(), Display.getHeight());
                     Graphics2D.getInstance()
                             .getCamera()
@@ -168,7 +174,9 @@ public class HeavensReign extends Game {
                 lag += elapsed;
 
                 while(lag > frameTime && skippedFrames < maxSkippedFrames) {
+
                     if(Display.wasDirty()) {
+
                         // End the old frame and start a new frame
                         SilenceEngine.getInstance().endFrame();
                         SilenceEngine.getInstance().beginFrame();
@@ -181,6 +189,7 @@ public class HeavensReign extends Game {
                             game.update((float)frameTime);
 
                             if(Game.getGameState() != null) {
+
                                 Game.getGameState().update((float)frameTime);
                             }
                         }
@@ -207,6 +216,7 @@ public class HeavensReign extends Game {
                 game.render(lagOffset, SilenceEngine.graphics.getBatcher());
 
                 if(Game.getGameState() != null) {
+
                     Game.getGameState().render(lagOffset, SilenceEngine.graphics.getBatcher());
                 }
 
@@ -215,6 +225,7 @@ public class HeavensReign extends Game {
                 framesProcessed++;
 
                 if(currentTime - lastFPSUpdate >= SECOND) {
+
                     fps = framesProcessed;
                     framesProcessed = 0;
                     lastFPSUpdate = currentTime;
