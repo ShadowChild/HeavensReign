@@ -7,3 +7,9 @@ build/
 config/
 classes/
 out/
+
+*.classpath
+*.metadata
+*.settings
+*.project
+*.pom
