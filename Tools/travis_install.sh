@@ -11,7 +11,7 @@ function installSE() {
   
   cd ./SilenceEngine
   gradle clean build javadoc
-  #mvnInstallSE()
+  mvnInstallSE
   cd ..
 }
 

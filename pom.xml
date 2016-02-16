@@ -81,8 +81,6 @@
             <groupId>com.goharsha</groupId>
             <artifactId>SilenceEngine</artifactId>
             <version>0.4.1b</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/libs/SilenceEngine/SilenceEngine.jar</systemPath>
         </dependency>
         
         <!-- Ashley entity framework -->

@@ -40,8 +40,14 @@ public class Main {
 
             try {
 
-                Download scDownload = new Download(new URL("https://github.com/ShadowChild/Cybernize/archive/master.zip"), new DownloadObserver(), new File(toolsDir, "downloads/Cybernize/"));
-                Download seDownload = new Download(new URL("https://github.com/sriharshachilakapati/SilenceEngine/archive/master.zip"), new DownloadObserver(), new File(toolsDir, "downloads/SE/"));
+                Download scDownload = new Download(
+                        new URL("https://github.com/ShadowChild/Cybernize/archive/master.zip"),
+                        new DownloadObserver(), new File(toolsDir, "downloads/Cybernize/")
+                );
+                Download seDownload = new Download(
+                        new URL("https://github.com/sriharshachilakapati/SilenceEngine/archive/master.zip"),
+                        new DownloadObserver(), new File(toolsDir, "downloads/SE/")
+                );
 
                 scDownload.download();
                 seDownload.download();
@@ -51,11 +57,19 @@ public class Main {
                 File scZip = new File(toolsDir, "downloads/Cybernize/master.zip");
                 File seZip = new File(toolsDir, "downloads/SE/master.zip");
 
-                unZipIt(scZip.getAbsolutePath(), new File(toolsDir, "downloads/temp/").getAbsolutePath());
-                unZipIt(seZip.getAbsolutePath(), new File(toolsDir, "downloads/temp/").getAbsolutePath());
+                unZipIt(scZip.getAbsolutePath(),
+                        new File(toolsDir, "downloads/temp/").getAbsolutePath()
+                );
+                unZipIt(seZip.getAbsolutePath(),
+                        new File(toolsDir, "downloads/temp/").getAbsolutePath()
+                );
 
-                FileUtils.copyDirectory(new File(toolsDir, "downloads/temp/Cybernize-master"), scFolder, true);
-                FileUtils.copyDirectory(new File(toolsDir, "downloads/temp/SilenceEngine-master"), seFolder, true);
+                FileUtils.copyDirectory(new File(toolsDir, "downloads/temp/Cybernize-master"),
+                        scFolder, true
+                );
+                FileUtils.copyDirectory(new File(toolsDir, "downloads/temp/SilenceEngine-master"),
+                        seFolder, true
+                );
 
                 FileUtils.deleteDirectory(new File(toolsDir, "download"));
 
@@ -83,29 +97,69 @@ public class Main {
 
         File gradleWrapper = new File(seFolder, gradlew);
 
-        String[] command = { gradleWrapper.getCanonicalPath(), "clean", "build", "javadoc" };
-        ProcessBuilder builder = new ProcessBuilder(command);
-        builder.directory(seFolder.getCanonicalFile());
+        // compile the jar
+        {
+            String[] command = { gradleWrapper.getCanonicalPath(), "clean", "build", "javadoc" };
+            ProcessBuilder builder = new ProcessBuilder(command);
+            builder.directory(seFolder.getCanonicalFile());
 
-        Process process = builder.start();
+            Process process = builder.start();
 
-        InputStream stream = process.getInputStream();
-        InputStreamReader reader = new InputStreamReader(stream);
-        BufferedReader br = new BufferedReader(reader);
-        String line;
-        System.out.printf("Output of running %s is:\n", Arrays.toString(command));
-        while((line = br.readLine()) != null) {
+            InputStream stream = process.getInputStream();
+            InputStreamReader reader = new InputStreamReader(stream);
+            BufferedReader br = new BufferedReader(reader);
+            String line;
+            System.out.printf("Output of running %s is:\n", Arrays.toString(command));
+            while((line = br.readLine()) != null) {
 
-            System.out.println(line);
+                System.out.println(line);
+            }
+
+            int exitValue = process.waitFor();
+            System.out.println("\n\nExit Value is " + exitValue);
+
+            if(exitValue == 0) {
+
+                FileUtils.copyDirectory(new File(seFolder, "build/libs"),
+                        new File(baseDir, "libs/SilenceEngine")
+                );
+                FileUtils.copyDirectory(new File(seFolder, "libs"),
+                        new File(baseDir, "libs/LWJGL")
+                );
+            }
         }
 
-        int exitValue = process.waitFor();
-        System.out.println("\n\nExit Value is " + exitValue);
+        // install into local maven repo
+        {
+            String mvnw = platform.equals("win") ? "mvnw.cmd" : "mvnw";
+            File mvnWrapper = new File(scFolder, mvnw);
 
-        if(exitValue == 0) {
+            String[] command = new String[] {
+                    mvnWrapper.getCanonicalPath(),
+                    "install:install-file",
+                    "-Dfile=./SilenceEngine/build/libs/SilenceEngine.jar",
+                    "-DgroupId=com.goharsha", "-DartifactId=silenceengine",
+                    "-Dversion=0.4.1b",
+                    "-Dpackaging=jar"
+            };
 
-            FileUtils.copyDirectory(new File(seFolder, "build/libs"), new File(baseDir, "libs/SilenceEngine"));
-            FileUtils.copyDirectory(new File(seFolder, "libs"), new File(baseDir, "libs/LWJGL"));
+            ProcessBuilder builder = new ProcessBuilder(command);
+            builder.directory(seFolder.getCanonicalFile());
+
+            Process process = builder.start();
+
+            InputStream stream = process.getInputStream();
+            InputStreamReader reader = new InputStreamReader(stream);
+            BufferedReader br = new BufferedReader(reader);
+            String line;
+            System.out.printf("Output of running %s is:\n", Arrays.toString(command));
+            while((line = br.readLine()) != null) {
+
+                System.out.println(line);
+            }
+
+            int exitValue = process.waitFor();
+            System.out.println("\n\nExit Value is " + exitValue);
         }
     }
 
@@ -136,47 +190,51 @@ public class Main {
 
         if(exitValue == 0) {
 
-            FileUtils.copyDirectory(new File(scFolder, "cybernize-core/build"), new File(baseDir, "libs/Cybernize/core"));
-            FileUtils.copyDirectory(new File(scFolder, "cybernize-opengl/build"), new File(baseDir, "libs/Cybernize/opengl"));
+            FileUtils.copyDirectory(new File(scFolder, "cybernize-core/build"),
+                    new File(baseDir, "libs/Cybernize/core")
+            );
+            FileUtils.copyDirectory(new File(scFolder, "cybernize-opengl/build"),
+                    new File(baseDir, "libs/Cybernize/opengl")
+            );
         }
     }
 
     // TODO: Port to ShadowCommon
+
     /**
      * Unzip it
-     * @param zipFile input zip file
+     *
+     * @param zipFile      input zip file
      * @param outputFolder zip file output folder
      */
-    public static void unZipIt(String zipFile, String outputFolder){
+    public static void unZipIt(String zipFile, String outputFolder) {
 
         byte[] buffer = new byte[1024];
 
-        try{
+        try {
 
             //create output directory is not exists
             File folder = new File(outputFolder);
-            if(!folder.exists()){
+            if(!folder.exists()) {
                 folder.mkdir();
             }
 
             //get the zip file content
-            ZipInputStream zis =
-                    new ZipInputStream(new FileInputStream(zipFile));
+            ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFile));
             //get the zipped file list entry
             ZipEntry ze = zis.getNextEntry();
 
-            while(ze!=null){
+            while(ze != null) {
 
                 String fileName = ze.getName();
                 File newFile = new File(outputFolder + File.separatorChar + fileName);
 
-                System.out.println("file unzip : "+ newFile.getAbsoluteFile());
+                System.out.println("file unzip : " + newFile.getAbsoluteFile());
 
                 //create all non exists folders
                 //else you will hit FileNotFoundException for compressed folder
                 new File(newFile.getParent()).mkdirs();
-                if(ze.isDirectory()) newFile.mkdirs();
-                else newFile.createNewFile();
+                if(ze.isDirectory()) { newFile.mkdirs(); } else newFile.createNewFile();
 
                 if(newFile.isFile()) {
 
@@ -197,7 +255,7 @@ public class Main {
 
             System.out.println("Done");
 
-        }catch(IOException ex){
+        } catch(IOException ex) {
             ex.printStackTrace();
         }
     }
