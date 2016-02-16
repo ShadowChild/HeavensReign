@@ -115,7 +115,7 @@ public class Main {
         String mvnw = platform.equals("win") ? "mvnw.cmd" : "mvnw";
         File mvnWrapper = new File(scFolder, mvnw);
 
-        String[] command = { mvnWrapper.getCanonicalPath(), "clean", "install" };
+        String[] command = { mvnWrapper.getCanonicalPath(), "clean", "install", "-DskipTests=true" };
         ProcessBuilder builder = new ProcessBuilder(command);
         builder.directory(scFolder.getCanonicalFile());
 

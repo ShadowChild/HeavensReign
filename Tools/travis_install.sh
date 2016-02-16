@@ -3,7 +3,7 @@
 function installSC() {
   
   cd ./Cybernize
-  mvn clean install
+  mvn clean install -DskipTests=true
   cd ..
 }
 
