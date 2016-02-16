@@ -138,7 +138,7 @@ public class Main {
                     mvnWrapper.getCanonicalPath(),
                     "install:install-file",
                     "-Dfile=./SilenceEngine/build/libs/SilenceEngine.jar",
-                    "-DgroupId=com.goharsha", "-DartifactId=silenceengine",
+                    "-DgroupId=com.goharsha", "-DartifactId=SilenceEngine",
                     "-Dversion=0.4.1b",
                     "-Dpackaging=jar"
             };

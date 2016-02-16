@@ -17,7 +17,7 @@ function installSE() {
 
 function mvnInstallSE() {
   
-  mvn install:install-file -Dfile=./build/libs/SilenceEngine.jar -DgroupId=com.goharsha -DartifactId=silenceengine -Dversion=0.4.1b -Dpackaging=jar
+  mvn install:install-file -Dfile=./build/libs/SilenceEngine.jar -DgroupId=com.goharsha -DartifactId=SilenceEngine -Dversion=0.4.1b -Dpackaging=jar
 }
 
 function makeDirs() {
