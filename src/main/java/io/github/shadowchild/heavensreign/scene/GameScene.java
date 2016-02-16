@@ -13,7 +13,6 @@ import com.shc.silenceengine.input.Keyboard;
 import com.shc.silenceengine.math.Frustum;
 import com.shc.silenceengine.math.Vector2;
 import com.shc.silenceengine.scene.Scene2D;
-
 import io.github.shadowchild.heavensreign.entity.Entity;
 import io.github.shadowchild.heavensreign.entity.EntityPlayer;
 
@@ -22,72 +21,81 @@ import io.github.shadowchild.heavensreign.entity.EntityPlayer;
  */
 public class GameScene extends Scene2D {
 
-	public final Engine ENGINE = new Engine();
+    public final Engine ENGINE = new Engine();
 
-	public EntityPlayer player;
+    public EntityPlayer player;
 
-	public GameScene(EntityPlayer player) {
+    public GameScene(EntityPlayer player) {
 
-		this.player = player;
-	}
+        this.player = player;
+    }
 
-	@Override
-	public void update(float delta) {
+    @Override
+    public void update(float delta) {
 
-		ENGINE.update(delta);
-		if(Keyboard.isPressed(Keyboard.KEY_W)) {
+        ENGINE.update(delta);
+        if(Keyboard.isPressed(Keyboard.KEY_W)) {
 
-			player.setY(player.getY() - 1);
-		}
-		if(Keyboard.isPressed(Keyboard.KEY_D)) {
+            addVelocity(0, -1);
+        }
+        if(Keyboard.isPressed(Keyboard.KEY_D)) {
 
-			player.setX(player.getX() + 1);
-		}
-		if(Keyboard.isPressed(Keyboard.KEY_A)) {
+            addVelocity(1, 0);
+        }
+        if(Keyboard.isPressed(Keyboard.KEY_A)) {
 
-			player.setX(player.getX() - 1);
-		}
-		if(Keyboard.isPressed(Keyboard.KEY_S)) {
+            addVelocity(-1, 0);
+        }
+        if(Keyboard.isPressed(Keyboard.KEY_S)) {
 
-			player.setY(player.getY() + 1);
-		}
-	}
+            addVelocity(0, 1);
+        }
+        ENGINE.getEntities().forEach(e -> {
+            ((Entity)e).update(delta);
+        });
+        player.setVelocity(Vector2.ZERO);
+    }
 
-	@Override
-	public void render(float delta) {
+    public void addVelocity(float x, float y) {
 
-		// Draw the background
-		Graphics2D graphics = SilenceEngine.graphics.getGraphics2D();
-		graphics.setPaint(new Paint(Color.AZURE));
-		graphics.fillRect(new Vector2(0, 0), Display.getWidth(), Display.getHeight());
+        player.setVelocity(player.getVelocity().add(x,  y));
+    }
 
-		// Draw the entities
-		// Get the Frustum once to prevent unnecessary calculations
-		Frustum frustum = BaseCamera.CURRENT.getFrustum();
+    @Override
+    public void render(float delta) {
 
-		SpriteBatch batch = SilenceEngine.graphics.getSpriteBatch();
-		batch.begin();
-		{
-			// for each entity, draw it
-			for(com.badlogic.ashley.core.Entity ent : ENGINE.getEntities()) {
+        // Draw the background
+        Graphics2D graphics = SilenceEngine.graphics.getGraphics2D();
+        graphics.setPaint(new Paint(Color.AZURE));
+        graphics.fillRect(new Vector2(0, 0), Display.getWidth(), Display.getHeight());
 
-				Entity e = (Entity)ent;
+        // Draw the entities
+        // Get the Frustum once to prevent unnecessary calculations
+        Frustum frustum = BaseCamera.CURRENT.getFrustum();
 
-				// TODO: Add frustrum culling and depth here
+        SpriteBatch batch = SilenceEngine.graphics.getSpriteBatch();
+        batch.begin();
+        {
+            // for each entity, draw it
+            for(com.badlogic.ashley.core.Entity ent : ENGINE.getEntities()) {
 
-				e.render(delta, batch);
-			}
-		}
-		batch.end();
-	}
+                Entity e = (Entity)ent;
 
-	public void addEntity(Entity entity) {
+                // TODO: Add frustrum culling and depth here
 
-		ENGINE.addEntity(entity);
-	}
+                e.render(delta, batch);
+            }
+        }
+        batch.end();
+    }
 
-	public void removeEntity(Entity entity) {
+    public void addEntity(Entity entity) {
 
-		ENGINE.removeEntity(entity);
-	}
+        ENGINE.addEntity(entity);
+    }
+
+    public void removeEntity(Entity entity) {
+
+        ENGINE.removeEntity(entity);
+    }
 }
