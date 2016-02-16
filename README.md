@@ -1,6 +1,6 @@
 # HeavensReign [![Build Status](https://travis-ci.org/ShadowChild/HeavensReign.svg)](https://travis-ci.org/ShadowChild/HeavensReign)
 
-Run ```NewSetup.bat``` to initialise everything
+Run ```Setup.bat``` or ```Setup.sh``` to initialise everything
 
 TODO:
 * Have setup shell scrips - Partially done, needs testing and updating accordingly
