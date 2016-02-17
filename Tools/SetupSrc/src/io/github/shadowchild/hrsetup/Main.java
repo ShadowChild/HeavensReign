@@ -137,7 +137,7 @@ public class Main {
             String[] command = new String[] {
                     mvnWrapper.getCanonicalPath(),
                     "install:install-file",
-                    "-Dfile=./SilenceEngine/build/libs/SilenceEngine.jar",
+                    "-Dfile=./build/libs/SilenceEngine.jar",
                     "-DgroupId=com.goharsha", "-DartifactId=SilenceEngine",
                     "-Dversion=0.4.1b",
                     "-Dpackaging=jar"
