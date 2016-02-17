@@ -16,7 +16,6 @@ public class InGameState extends PauseableState {
     public GameScene mainScene;
     public OrthoCam cam;
     public EntityPlayer player;
-    //	public Player player;
 
     @Override
     public void onEnter() {

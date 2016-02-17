@@ -50,9 +50,7 @@ public class GameScene extends Scene2D {
 
             addVelocity(0, 1);
         }
-        ENGINE.getEntities().forEach(e -> {
-            ((Entity)e).update(delta);
-        });
+        ENGINE.getEntities().forEach(e -> ((Entity)e).update(delta));
         player.setVelocity(Vector2.ZERO);
     }
 

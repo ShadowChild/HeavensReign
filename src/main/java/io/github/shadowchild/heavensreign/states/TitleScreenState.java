@@ -1,9 +1,11 @@
 package io.github.shadowchild.heavensreign.states;
 
 
+import com.shc.silenceengine.core.Game;
 import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
+import com.shc.silenceengine.input.Keyboard;
 import com.shc.silenceengine.utils.Logger;
 import io.github.shadowchild.heavensreign.gui.screen.Gui;
 import io.github.shadowchild.heavensreign.gui.screen.GuiTitleScreen;
@@ -26,6 +28,10 @@ public class TitleScreenState extends PauseableState {
     public void update(float delta) {
 
         gui.update(delta);
+        if(Keyboard.isPressed(Keyboard.KEY_SPACE)) {
+
+            Game.setGameState(new InGameState());
+        }
     }
 
     @Override
@@ -46,5 +52,6 @@ public class TitleScreenState extends PauseableState {
     @Override
     public void onLeave() {
 
+        gui = null;
     }
 }
