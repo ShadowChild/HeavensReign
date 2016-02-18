@@ -7,6 +7,7 @@ import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Paint;
 import com.shc.silenceengine.math.Vector2;
+import io.github.shadowchild.heavensreign.gui.screen.Gui;
 
 /**
  * Created by Zach Piddock on 04/12/2015.
@@ -20,6 +21,8 @@ public abstract class GuiElement implements IUpdatable {
     private Paint paint;
 
     private boolean isActive = true, isVisible = true;
+
+    private Gui.Action action;
 
     public GuiElement(Vector2 location, Vector2 size) {
 
@@ -40,6 +43,7 @@ public abstract class GuiElement implements IUpdatable {
 
     public void update(float delta) {
 
+        doUpdate(delta);
     }
 
     public Texture getTexture() {
@@ -96,5 +100,15 @@ public abstract class GuiElement implements IUpdatable {
     public void setVisible(boolean visible) {
 
         isVisible = visible;
+    }
+
+    public Gui.Action getAction()
+    {
+        return action;
+    }
+
+    public void setAction(Gui.Action action)
+    {
+        this.action = action;
     }
 }

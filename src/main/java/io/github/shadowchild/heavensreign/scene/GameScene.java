@@ -36,19 +36,19 @@ public class GameScene extends Scene2D {
         ENGINE.update(delta);
         if(Keyboard.isPressed(Keyboard.KEY_W)) {
 
-            addVelocity(0, -1);
+            addVelocity(0, -7.5f);
         }
         if(Keyboard.isPressed(Keyboard.KEY_D)) {
 
-            addVelocity(1, 0);
+            addVelocity(7.5f, 0);
         }
         if(Keyboard.isPressed(Keyboard.KEY_A)) {
 
-            addVelocity(-1, 0);
+            addVelocity(-7.5f, 0);
         }
         if(Keyboard.isPressed(Keyboard.KEY_S)) {
 
-            addVelocity(0, 1);
+            addVelocity(0, 7.5f);
         }
         ENGINE.getEntities().forEach(e -> ((Entity)e).update(delta));
         player.setVelocity(Vector2.ZERO);

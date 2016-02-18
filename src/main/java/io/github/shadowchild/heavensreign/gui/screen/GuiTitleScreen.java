@@ -8,9 +8,11 @@ import com.shc.silenceengine.graphics.Color;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Paint;
 import com.shc.silenceengine.math.Vector2;
+import io.github.shadowchild.heavensreign.game.HRGame;
 import io.github.shadowchild.heavensreign.gui.element.GuiButton;
 import io.github.shadowchild.heavensreign.gui.element.GuiElement;
 import io.github.shadowchild.heavensreign.gui.element.GuiImage;
+import io.github.shadowchild.heavensreign.states.InGameState;
 import io.github.shadowchild.heavensreign.utils.DisplayUtils;
 import io.github.shadowchild.heavensreign.utils.GuiUtils;
 import org.apache.commons.lang3.tuple.Pair;
@@ -67,10 +69,23 @@ public class GuiTitleScreen extends Gui {
     @Override
     public void doUpdate(float delta) {
 
+
     }
 
     @Override
-    public void onAction(GuiElement element, Action action, int button, int mods) {
+    public void onAction(GuiElement element, Action action) {
 
+        super.onAction(element, action);
+
+        if(element instanceof GuiButton) {
+
+            GuiButton button = (GuiButton)element;
+
+
+            if(button.getText().equals("Play") && action == Action.MOUSE_UP) {
+
+                HRGame.setGameState(new InGameState());
+            }
+        }
     }
 }

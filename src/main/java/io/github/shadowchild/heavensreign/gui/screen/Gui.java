@@ -5,6 +5,7 @@ import com.shc.silenceengine.core.IUpdatable;
 import com.shc.silenceengine.graphics.Batcher;
 import com.shc.silenceengine.graphics.Graphics2D;
 import com.shc.silenceengine.graphics.Sprite;
+import com.shc.silenceengine.input.Mouse;
 import io.github.shadowchild.heavensreign.gui.element.GuiElement;
 
 import java.util.ArrayList;
@@ -50,15 +51,36 @@ public abstract class Gui implements IUpdatable {
 
     public abstract void doUpdate(float delta);
 
-    public abstract void onAction(GuiElement element, Action action, int button, int mods);
+    public void onAction(GuiElement element, Action action){
+
+        element.setAction(action);
+    }
 
     public void update(float delta) {
 
-        for(GuiElement e : forgroundElements) {
+        boolean mPressed = Mouse.isPressed(Mouse.MOUSE_BUTTON_1);
+        boolean mReleased = Mouse.isReleased(Mouse.MOUSE_BUTTON_1);
 
+        for(GuiElement element : forgroundElements) {
 
+            if(element.intersects(Mouse.getX(), Mouse.getY())) {
+
+                if (element.getAction() == null || element.getAction() == Action.LEAVING) {
+
+                    onAction(element, Action.ENTERED);
+                } else if(element.getAction() == Action.HOVERING && mPressed || element.getAction() == Action.MOUSE_DOWN) {
+
+                    onAction(element, mPressed ? Action.MOUSE_DOWN : mReleased ? Action.MOUSE_UP : Action.HOVERING);
+                } else if(!mPressed) {
+
+                    onAction(element, Action.HOVERING);
+                }
+            }
+            else if(element.getAction() == Action.HOVERING) {
+
+                onAction(element, Action.LEAVING);
+            }
         }
-
         doUpdate(delta);
     }
 
