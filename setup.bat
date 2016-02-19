@@ -1,3 +1,3 @@
 @ECHO OFF
-java -jar ./Tools/SetupSrc.jar win
+java -jar ./Tools/other_tools/Setup.jar win
 pause

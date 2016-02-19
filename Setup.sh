@@ -3,5 +3,5 @@
 
 set +v
 
-java -jar ./Tools/SetupSrc.jar
+java -jar ./Tools/other_tools/Setup.jar
 sleep
