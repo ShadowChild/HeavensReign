@@ -4,9 +4,6 @@
 [submodule "Cybernize"]
 	path = Cybernize
 	url = https://github.com/ShadowChild/Cybernize.git
-[submodule "PrivateAssets"]
-	path = PrivateAssets
-	url = https://github.com/ShadowChild/HeavensReignPrivate.git
 [submodule "Tools"]
 	path = Tools
 	url = https://github.com/ShadowChild/HeavensReignTools.git
